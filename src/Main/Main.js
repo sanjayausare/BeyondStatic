@@ -1,11 +1,13 @@
 import React from 'react'
+import LogoStuff from './LogoStuff'
 
 const Main = () => {
 
     return(
-        <h1>Hey</h1>
+        <div>
+            <LogoStuff/>
+        </div>
     )
-
 }
 
 export default Main;
