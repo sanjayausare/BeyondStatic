@@ -2,8 +2,20 @@ import styles from "./SignUpForm.module.css";
 import SignUpInput from "./SignUpInput";
 import React, {useState} from 'react'
 import axios from 'axios'
+let passwordValidator = require('password-validator');
 
 const SignUpForm = () => {
+
+    let schema = new passwordValidator();
+    schema
+    .is().min(6)                                   
+    .is().max(100)                                  
+    .has().uppercase()                              
+    .has().lowercase()                              
+    .has().digits(1)
+    .has().not().spaces()
+    .has().symbols(1)
+
 
     const [fname, setFName] = useState('');
     const [lname, setLName] = useState('');
@@ -54,6 +66,11 @@ const SignUpForm = () => {
         {
             alert('Password and Confirm Password do not match.')
         }
+        if(!schema.validate(password))
+        {
+            alert('Password should be of atleast length 6. It must have upper and lower case letters, atleast 1 number and 1 symbol');
+            return 0;
+        }
         const body = {
             "username": username,
             "fname": fname,
@@ -82,10 +99,9 @@ const SignUpForm = () => {
           .catch(
             err => {
               console.log(err);
-              alert('Error');
+              alert('Server Seems to be down. Please try later.');
             }
           );
-
     }
 
   return (
@@ -171,14 +187,14 @@ const SignUpForm = () => {
                 <div class="col-lg-12 col-sm-12" style={{marginTop: '5%'}}>
                     <div class="checkbox-inline">
                     <label class="checkbox-inline" style={{fontSize: '1.2rem', color: '#ffffff'}}>
-                    <input class="form-check-input" type="checkbox" value=""/> &nbsp;&nbsp;I agree to the Terms and Conditions</label>
+                    <input class="form-check-input" type="checkbox" value="" onChange={agreedTCHandler} /> &nbsp;&nbsp;I agree to the Terms and Conditions</label>
                     </div>
                 </div>
                 </div>
                 </div>
                 <div className="col-lg-3"></div>
                 <div className="text-center col-lg-6 col-sm-12">
-                    <button type="submit" style={{marginTop: '15%', width: '100%', paddingTop: '3%', paddingBottom: '3%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white', border: 'none'}} >Sign Up &nbsp; <img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button>
+                    { agreedTC ? <button type="submit" style={{marginTop: '15%', width: '100%', paddingTop: '3%', paddingBottom: '3%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white', border: 'none'}} >Sign Up &nbsp; <img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button> : null}
                 </div>
                 <div className="col-lg-3"></div>
               </div>
