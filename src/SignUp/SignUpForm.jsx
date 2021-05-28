@@ -1,7 +1,93 @@
 import styles from "./SignUpForm.module.css";
 import SignUpInput from "./SignUpInput";
+import React, {useState} from 'react'
+import axios from 'axios'
 
 const SignUpForm = () => {
+
+    const [fname, setFName] = useState('');
+    const [lname, setLName] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confPassword, setConfPassword] = useState('');
+    const [agreedTC, setAgreedTC] = useState(false);
+
+    const fNameHandler = (e) => {
+        setFName(e.target.value);
+    }
+
+    const lNameHandler = (e) => {
+        setLName(e.target.value);
+    }
+
+    const usernameHandler = (e) => {
+        setUsername(e.target.value);
+    }
+
+    const emailHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const passwordHandler = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const confPasswordHandler = (e) => {
+        setConfPassword(e.target.value);
+    }
+
+    const agreedTCHandler = () => {
+        if(agreedTC === true)
+        {
+            setAgreedTC(false)
+        }
+        else
+        {
+            setAgreedTC(true)
+        }
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if(password !== confPassword)
+        {
+            alert('Password and Confirm Password do not match.')
+        }
+        const body = {
+            "username": username,
+            "fname": fname,
+            "lname": lname,
+            "email": email,
+            "password": password 
+        }
+        axios.post(
+            'http://127.0.0.1:8000/api/register',
+             body,
+            {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }
+          ).then(
+            response => {
+              console.log(response)
+                if(response.status === 200){
+                  const data = response.data;
+                  localStorage.setItem('username', data.username);
+                  localStorage.setItem('token', data.token);
+                }
+            }
+          )
+          .catch(
+            err => {
+              console.log(err);
+              alert('Error');
+            }
+          );
+
+    }
+
   return (
     <div className="col-lg-6 col-sm-12" style={{ backgroundColor: "#4171EE" }}>
       <div className="container container-fluid" style={{ margin: "5% 0" }}>
@@ -40,33 +126,36 @@ const SignUpForm = () => {
           </div>
         </div>
         <div className="container container-fluid" style={{margin: '0 2px'}}>
-            <form style={{margin: '8% 10%'}}>
+            <form style={{margin: '8% 10%'}} onSubmit={submitHandler}>
               <div className="row">
                 <div className="col-lg-6 col-sm-12" style={{marginBottom: '8px'}}>
                   <SignUpInput
                     type="text"
                     name="fname"
                     labelName="First Name"
+                    handler={fNameHandler}
                   />
                 </div>
                 <div className="col-lg-6 col-sm-12" style={{marginBottom: '8px'}}>
-                  <SignUpInput type="text" name="lname" labelName="Last Name" />
+                  <SignUpInput type="text" name="lname" labelName="Last Name" handler={lNameHandler} />
                 </div>
                 <div className="col-lg-12 col-sm-12" style={{marginBottom: '8px'}}>
                   <SignUpInput
                     type="text"
                     name="username"
                     labelName="Username"
+                    handler={usernameHandler}
                   />
                 </div>
                 <div className="col-lg-12 col-sm-12" style={{marginBottom: '8px'}}>
-                  <SignUpInput type="email" name="email" labelName="Email" />
+                  <SignUpInput type="email" name="email" labelName="Email" handler={emailHandler}  />
                 </div>
                 <div className="col-lg-12 col-sm-12" style={{marginBottom: '8px'}}>
                   <SignUpInput
                     type="password"
                     name="password"
                     labelName="Password"
+                    handler={passwordHandler}
                   />
                 </div>
                 <div className="col-lg-12 col-sm-12" style={{marginBottom: '8px'}}>
@@ -74,6 +163,7 @@ const SignUpForm = () => {
                     type="password"
                     name="confirmPassword"
                     labelName="Confirm Password"
+                    handler={confPasswordHandler}
                   />
                 </div>
                 <div className="col-lg-12 col-sm-12 text-center">
