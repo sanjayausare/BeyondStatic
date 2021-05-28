@@ -2,15 +2,17 @@ import React from "react";
 import styles from "./LogoStuff.module.css";
 import Button from '@material-ui/core/Button';
 
+const imgClasses = `img img-fluid ${styles['vert-move']}`
+
 const LogoStuff = () => {
   return (
     <div className="text-center container container-fluid">
         <div className={styles.stuff}>
       <div class="row align-items-start">
-        <div class="col-lg-2 col-sm-12"><img src="./images/logo.svg" className="img img-fluid" alt="logo" width="160px" height="160px" /></div>
+        <div class="col-lg-2 col-sm-12"><img src="./images/logo.svg" className={imgClasses}  alt="logo" width="140px" height="140px" style={{marginBottom: '13px'}} /></div>
         <div class="col-lg-10 col-sm-12" >
           <div class="row align-items-start">
-          <div class="col-lg-12" className={styles.brandName}>Beyond Static</div>
+          <div class="col-lg-12" className={styles.brandName} style={{lineHeight: '5rem'}}>Beyond Static</div>
             <div class="col-lg-12"><span className={styles.tagline}>Your Best bet to add forms to your Static Pages</span></div>
             <div class="col-lg-12" style={{marginTop: '40px'}}>
                 <div className="row align-items-start">
