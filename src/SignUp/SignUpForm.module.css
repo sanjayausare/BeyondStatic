@@ -4,3 +4,10 @@
 .brandName{
     font-family: 'Roboto Slab', serif;
 }
+
+.signUpArrow{
+    transition: transform .7s ease-in-out;
+  }
+.signUpArrow:hover {
+    transform: rotate(45deg);
+  }
