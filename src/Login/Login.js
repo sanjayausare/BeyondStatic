@@ -1,11 +1,15 @@
-import React from 'react'
+import LoginRightBanner from './LoginRightBanner'
+import LoginForm from './LoginForm'
 
 const Login = () => {
+  return (
+    
+    <div style={{margin:'0'}}>
+        <LoginForm/>
+        <LoginRightBanner/>
+      </div>
 
+  );
+};
 
-    return(
-        <h1>Hey There</h1>
-    )
-}
-
-export default Login
+export default Login;
