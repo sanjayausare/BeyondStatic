@@ -1,15 +1,13 @@
-import LoginRightBanner from './LoginRightBanner'
-import LoginForm from './LoginForm'
+import SignUpRightBanner from './SignUpRightBanner'
+import SignUpForm from './SignUpForm'
 
-const SignIn = () => {
+const SignUp = () => {
   return (
-    
-    <div style={{margin:'0'}}>
-        <LoginForm/>
-        <LoginRightBanner/>
+    <div className="container-fluid row" style={{margin:'0'}}>
+        <SignUpForm/>
+        <SignUpRightBanner/>
       </div>
-
   );
 };
 
-export default SignIn;
+export default SignUp;
