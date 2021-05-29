@@ -1,0 +1,18 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+.cont {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.signUpArrow {
+  transition: transform 0.7s ease-in-out;
+}
+@media only screen and (max-width: 1050px) {
+  .cont {
+    display: block;
+    text-align: center;
+  }
+}
