@@ -1,7 +1,7 @@
 import LoginRightBanner from './LoginRightBanner'
 import LoginForm from './LoginForm'
 
-const Login = () => {
+const SignIn = () => {
   return (
     
     <div style={{margin:'0'}}>
@@ -12,4 +12,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
