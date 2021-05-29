@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from './Login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -107,7 +108,7 @@ class Login extends Component {
                    this.signIn();
                  }}
                >
-                 Log In
+                 Log In&nbsp;&nbsp;&nbsp;<img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} />
                </Button>
               </div>
              <div className="col-lg-12 col-sm-12" style={{marginTop: '4%', marginBottom: '2%'}}>
