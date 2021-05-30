@@ -1,16 +1,13 @@
-import LoginRightBanner from './LoginRightBanner'
-import LoginForm from './LoginForm'
-import './Login.css';
+import SignUpRightBanner from './SignUpRightBanner'
+import SignUpForm from './SignUpForm'
 
-const SignIn = () => {
+const SignUp = () => {
   return (
-    
-    <div  className=" cont col-lg-12 col-sm-12" style={{padding:'0',margin:'0'}}>
-        <LoginForm/>
-        <LoginRightBanner/>
+    <div className="container-fluid row" style={{margin:'0'}}>
+        <SignUpForm/>
+        <SignUpRightBanner/>
       </div>
-
   );
 };
 
-export default SignIn;
+export default SignUp;

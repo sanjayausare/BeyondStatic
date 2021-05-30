@@ -3,7 +3,7 @@ import SignUpForm from './SignUpForm'
 
 const SignUp = () => {
   return (
-    <div className="row" style={{margin:'0'}}>
+    <div className="container-fluid row" style={{margin:'0'}}>
         <SignUpForm/>
         <SignUpRightBanner/>
       </div>
