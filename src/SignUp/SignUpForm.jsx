@@ -2,6 +2,8 @@ import styles from "./SignUpForm.module.css";
 import SignUpInput from "./SignUpInput";
 import React, {useState} from 'react'
 import axios from 'axios'
+import {getURL} from '../utils/index'
+import AlertDialogSlide from './AlertDialogSlide'
 let passwordValidator = require('password-validator');
 
 const SignUpForm = () => {
@@ -24,6 +26,10 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
     const [agreedTC, setAgreedTC] = useState(false);
+    const [alertCode, setAlertCode] = useState(0)
+
+    const thatURL = getURL() + "/api/register"
+    console.log(thatURL)
 
     const fNameHandler = (e) => {
         setFName(e.target.value);
@@ -64,11 +70,12 @@ const SignUpForm = () => {
         e.preventDefault();
         if(password !== confPassword)
         {
-            alert('Password and Confirm Password do not match.')
+            setAlertCode(1);
+            return 0;
         }
         if(!schema.validate(password))
         {
-            alert('Password should be of atleast length 6. It must have upper and lower case letters, atleast 1 number and 1 symbol');
+            setAlertCode(2);
             return 0;
         }
         const body = {
@@ -79,7 +86,7 @@ const SignUpForm = () => {
             "password": password 
         }
         axios.post(
-            'http://127.0.0.1:8000/api/register',
+            thatURL,
              body,
             {
               headers: {
@@ -98,14 +105,20 @@ const SignUpForm = () => {
           )
           .catch(
             err => {
-              console.log(err);
-              alert('Server Seems to be down. Please try later.');
+              setAlertCode(3);
+              return 0;
             }
           );
     }
 
+  
+
   return (
     <div className="col-lg-6 col-sm-12" style={{ backgroundColor: "#4171EE" }}>
+      {alertCode===1 ? <AlertDialogSlide title="Are you high?" body="Password and Confirm Password do not match." /> : null}
+      {alertCode===2 ? <AlertDialogSlide title="Secure Much?" body="Password should be of atleast length 6. It must have upper and lower case letters, atleast 1 number and 1 symbol." /> : null}
+      {alertCode===3 ? <AlertDialogSlide title="Servers Down!" body="Server Seems to be down. Please try later. We got this." /> : null}
+      
       <div className="container container-fluid" style={{ margin: "5% 0" }}>
         <div className="container container-fluid text-center">
           <div className="row" style={{ margin: "0 auto" }}>
