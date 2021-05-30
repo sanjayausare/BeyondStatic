@@ -10,10 +10,10 @@ const SignUpForm = () => {
 
     let schema = new passwordValidator();
     schema
-    .is().min(6)                                   
-    .is().max(100)                                  
-    .has().uppercase()                              
-    .has().lowercase()                              
+    .is().min(6)
+    .is().max(100)
+    .has().uppercase()
+    .has().lowercase()
     .has().digits(1)
     .has().not().spaces()
     .has().symbols(1)
@@ -83,7 +83,7 @@ const SignUpForm = () => {
             "fname": fname,
             "lname": lname,
             "email": email,
-            "password": password 
+            "password": password
         }
         axios.post(
             thatURL,
@@ -98,8 +98,19 @@ const SignUpForm = () => {
               console.log(response)
                 if(response.status === 200){
                   const data = response.data;
+                  if(data.status === "400 Bad Request")
+                  {
+                    setAlertCode(4);
+                    return 0;
+                  }
+                  if(data.status === "403 User already exists")
+                  {
+                    setAlertCode(5);
+                    return 0;
+                  }
                   localStorage.setItem('username', data.username);
                   localStorage.setItem('token', data.token);
+                  window.location = '/dashboard'
                 }
             }
           )
@@ -111,14 +122,15 @@ const SignUpForm = () => {
           );
     }
 
-  
+
 
   return (
     <div className="col-lg-6 col-sm-12" style={{ backgroundColor: "#4171EE" }}>
       {alertCode===1 ? <AlertDialogSlide title="Are you high?" body="Password and Confirm Password do not match." /> : null}
       {alertCode===2 ? <AlertDialogSlide title="Secure Much?" body="Password should be of atleast length 6. It must have upper and lower case letters, atleast 1 number and 1 symbol." /> : null}
       {alertCode===3 ? <AlertDialogSlide title="Servers Down!" body="Server Seems to be down. Please try later. We got this." /> : null}
-      
+      {alertCode===4 ? <AlertDialogSlide title="Token Error" body="Account created but error in passing token. Kindly Login." /> : null}
+      {alertCode===5 ? <AlertDialogSlide title="Get help for Alzheimers" body="Account already exists." /> : null}
       <div className="container container-fluid" style={{ margin: "5% 0" }}>
         <div className="container container-fluid text-center">
           <div className="row" style={{ margin: "0 auto" }}>
