@@ -2,7 +2,7 @@ const LoginRightBanner = () => {
     return(
         <div style={{ height: "100%"}}>
         <div className="container-fluid">
-          <div className="row">
+          <div className="row g-0">
             <div className="col-lg-12 col-sm-12">
               <h1
                 style={{
