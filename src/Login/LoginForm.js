@@ -58,7 +58,7 @@ class Login extends Component {
     return (
         <div style={{backgroundColor: '#4171EE', height: '100%'}}>
         <div className="container container-fluid text-center" style={{margin: '0 auto'}}>
-            <div className="row" style={{padding: '10% 3% 5% 0%'}}>
+            <div className="row" style={{padding: '10% 3% 5% 0%',margin: '0'}}>
               <div className="col-lg-3 col-sm-12">
                 <img src="./Logo.svg" alt="BS Logo"  style={{height:'164px'}} />
             </div>
@@ -74,7 +74,9 @@ class Login extends Component {
                         </div>
                
             </div>
+            
              <div className="col-lg-12">
+             <br/><br/>
                      <TextField
               style={{backgroundColor: '#fff', color: '#000',borderRadius:'2em',width:'70%',padding:'1%',paddingLeft:'3%'}}
               InputProps={{ disableUnderline: true }}               
@@ -99,6 +101,7 @@ class Login extends Component {
                 </div>
                 
              <div className="col-lg-12">
+             <br/>
                <Button
                style={{backgroundColor: '#0046FF', color: '#fff',borderRadius:'2em'}}
                  variant="contained"

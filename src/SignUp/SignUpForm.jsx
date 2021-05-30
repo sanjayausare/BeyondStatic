@@ -154,7 +154,7 @@ const SignUpForm = () => {
             </div>
           </div>
         </div>
-        <div className="container container-fluid" style={{margin: '0 2px'}}>
+        <div className="container container-fluid" style={{margin: '0'}}>
             <form style={{margin: '8% 10%'}} onSubmit={submitHandler}>
               <div className="row">
                 <div className="col-lg-6 col-sm-12" style={{marginBottom: '8px'}}>
