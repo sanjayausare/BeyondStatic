@@ -1,8 +1,11 @@
+import Navbar from './Navbar'
+import NewProject from './NewProject'
+
 const Dashboard = () => {
     return(
         <div>
-            Hello There!
-            general kenobi
+            <Navbar/>
+            <NewProject/>
         </div>
     )
 }
