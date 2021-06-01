@@ -4,9 +4,9 @@ import styles from './NewProject.module.css'
 const NewProject = () => {
 
     return(
-        <div className="row">
+        <div className="row"  style={{margin: '0', padding: '0'}}>
             <br/>
-            <div className={styles.card}>
+            <div>
             <CreateNew/>
             </div>
         </div>
