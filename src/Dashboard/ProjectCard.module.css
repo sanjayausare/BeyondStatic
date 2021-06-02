@@ -1,0 +1,15 @@
+.pinkCard{
+    padding: 3% 5%;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    background-color: #2D62ED;
+    color: white;
+}
+
+.blueCard{
+    padding: 3% 5%;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    background-color: #FF007C;
+    color: white;
+}

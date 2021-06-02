@@ -3,7 +3,7 @@ import styles from './CreateNew.module.css'
 
 const CreateNew = () => {
 
-    const cardClasses = "col-lg-3 col-sm-12" + styles.card
+    const cardClasses = "col-lg-4 col-sm-12" + styles.card
     return(
         <div className={cardClasses} style={{marginTop: '5%', marginLeft: '0', boxShadow: '0px 3px 6px #00000029', padding: '2%', borderRadius: '20px', marginRight: '0'}}>
             <h2 style={{color:'#2D62ED'}}>Create A New Project</h2>

@@ -1,6 +1,8 @@
 import Navbar from './Navbar'
 import NewProject from './NewProject'
 import MyProjects from './MyProjects'
+import Overview from './Overview/Overview'
+import Footer from './Footer'
 
 const Dashboard = () => {
     return(
@@ -8,6 +10,8 @@ const Dashboard = () => {
             <Navbar style={{padding:'0',margin:'0'}}/>
             <NewProject style={{padding:'0',margin:'0'}}/>
             <MyProjects style={{padding:'0',margin:'0'}}/>
+            <Overview style={{padding:'0',margin:'0'}}/>
+            <Footer style={{padding:'0',margin:'0'}}/>
         </div>
     )
 }
