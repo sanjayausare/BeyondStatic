@@ -166,8 +166,13 @@ const SignUpForm = () => {
             </div>
           </div>
         </div>
+        <div className="container-fluid row" style={{textAlign: 'center', color: 'white', fontSize: '1.3rem', marginTop: '2%'}}>
+            <div className="col-lg-12 col-sm-12">
+                  <p>Already a user?&nbsp; <span style={{textDecoration: 'underline'}} onClick={()=> window.location = "/login"}>Login</span></p>
+            </div>
+        </div>
         <div className="container container-fluid" style={{margin: '0'}}>
-            <form style={{margin: '8% 10%'}} onSubmit={submitHandler}>
+            <form style={{margin: '5% 10%'}} onSubmit={submitHandler}>
               <div className="row">
                 <div className="col-lg-6 col-sm-12" style={{marginBottom: '8px'}}>
                   <SignUpInput
