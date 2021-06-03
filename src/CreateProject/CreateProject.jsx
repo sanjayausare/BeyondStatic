@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import FormLeft from './FormLeft'
 import FormRight from './FormRight'
+import AlertDialogSlide from './AlertDialogSlide'
 
 export default function CreateProject() {
 
@@ -10,14 +11,17 @@ export default function CreateProject() {
     }
 
     return (
-        <div className="" style={{padding:'0',margin:'0'}}>
+        <div style={{padding:'0',margin:'0'}}>
             <Navbar style={{padding:'0',margin:'0'}}/>
+            <br />
+            <form onSubmit={formSubmitHandler}>
             <div className="container-fluid row g-0" style={{margin:'0'}}>
-                <form onSubmit={formSubmitHandler}>
+                
                 <FormLeft/>
-                <FormRight style={{margin: '0'}} />
-                </form>
+                <FormRight/>
+                
             </div>
+            </form>
         </div>
     )
 }
