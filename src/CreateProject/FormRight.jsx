@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styles from './FormRight.module.css'
 import AlertDialogSlide from './AlertDialogSlide'
 
-export default function FormRight() {
+export default function FormRight(props) {
 
     const [counter, setCounter] = useState(1);
 
@@ -12,19 +12,24 @@ export default function FormRight() {
     const [showField5, setShowField5] = useState(false);
     const [errorCode, setErrorCode] = useState(0);
 
-    
-
     const addCountHandler = () => {
-        setCounter(prevCount => prevCount +1);
+        setCounter(prev => prev+1);
         changedCounter();
     }
 
     const minusCountHandler = () => {
-        setCounter(prevCount => prevCount -1);
+        setCounter(prev => prev-1);
         changedCounter();
     }
 
+    useEffect(
+        () => {
+            changedCounter()
+        }, [counter]
+    )
+
     const changedCounter = () => {
+        setCounter(prev => prev)
         if(counter <= 0)
         {
             setErrorCode(1)
@@ -33,23 +38,32 @@ export default function FormRight() {
         if(counter === 1)
         {
             setShowField2(false)
+            props.field2Handler("")
             setShowField3(false)
+            props.field3Handler("")
             setShowField4(false)
+            props.field4Handler("")
             setShowField5(false)
+            props.field5Handler("")
         }
         if(counter === 2)
         {
             setShowField2(true)
             setShowField3(false)
+            props.field3Handler("")
             setShowField4(false)
+            props.field4Handler("")
             setShowField5(false)
+            props.field5Handler("")
         }
         if(counter === 3)
         {
             setShowField2(true)
             setShowField3(true)
             setShowField4(false)
+            props.field4Handler("")
             setShowField5(false)
+            props.field5Handler("")
         }
         if(counter === 4)
         {
@@ -57,6 +71,7 @@ export default function FormRight() {
             setShowField3(true)
             setShowField4(true)
             setShowField5(false)
+            props.field5Handler("")
         }
         if(counter === 5)
         {
@@ -72,6 +87,26 @@ export default function FormRight() {
         }
     }
 
+    const field1Hand = (e) => {
+        props.field1Handler(e.target.value)
+    }
+
+    const field2Hand = (e) => {
+        props.field2Handler(e.target.value)
+    }
+
+    const field3Hand = (e) => {
+        props.field3Handler(e.target.value)
+    }
+
+    const field4Hand = (e) => {
+        props.field4Handler(e.target.value)
+    }
+
+    const field5Hand = (e) => {
+        props.field5Handler(e.target.value)
+    }
+
     return (
         <div className="col-lg-6 col-sm-12" style={{ height: "100%", margin: '0' }}>
             {errorCode===1 ? <AlertDialogSlide title="Why Tho?" body="What would be the use of creating a Project with Zero Fields?" /> : null}
@@ -84,35 +119,35 @@ export default function FormRight() {
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4" style={{alignItems: 'right', textAlign: 'right'}}>
                     <img src="./images/plus.svg" alt="plus" onClick={addCountHandler} />&nbsp;&nbsp;&nbsp;
-                    <img src="./images/minus.svg" alt="minus" width="37px" onClick={minusCountHandler}  />
+                    <img src="./images/minus.svg" alt="minus" width="37px"  onClick={minusCountHandler}  />
                 </div>
                 <br />
                 <div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>
                     <h5 style={{color: '#2D62ED'}}>Field 1 Name</h5>
-                    <input type="text" className={styles.input} required/>
+                    <input type="text" className={styles.input} onChange={field1Hand} required/>
                 </div>
                 {
                     showField2 ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>
                     <h5 style={{color: '#2D62ED'}}>Field 2 Name</h5>
-                    <input type="text" className={styles.input}/>
+                    <input type="text" className={styles.input} onChange={field2Hand}/>
                 </div>) : null
                 }
                 {
                     showField3 ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>
                     <h5 style={{color: '#2D62ED'}}>Field 3 Name</h5>
-                    <input type="text" className={styles.input}/>
+                    <input type="text" className={styles.input} onChange={field3Hand}/>
                 </div>) : null
                 }
                 {
                     showField4 ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>
                     <h5 style={{color: '#2D62ED'}}>Field 4 Name</h5>
-                    <input type="text" className={styles.input}/>
+                    <input type="text" className={styles.input} onChange={field4Hand}/>
                 </div>) : null
                 }
                 {
                     showField5 ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>
                     <h5 style={{color: '#2D62ED'}}>Field 5 Name</h5>
-                    <input type="text" className={styles.input}/>
+                    <input type="text" className={styles.input} onChange={field5Hand}/>
                 </div>) : null
                 }
                 <div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto', alignItems: 'center', textAlign: 'center'}}>
