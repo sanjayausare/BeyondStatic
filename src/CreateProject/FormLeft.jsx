@@ -3,7 +3,7 @@ import styles from './FormLeft.module.css';
 
 export default function FormLeft() {
     return (
-        <div className="row col-lg-6 col-sm-12" style={{margin: '0'}}>
+        <div className="col-lg-6 col-sm-12" style={{margin: '0'}}>
             <br />
             <div className="container container-fluid">
                 <div className="col-lg-1 col-md-1 col-sm-1"></div><div className="col-lg-10 col-md-10 col-sm-10" style={{backgroundColor: '#2D62ED', borderRadius: '20px', margin: '2% auto', padding: '4%'}}>
