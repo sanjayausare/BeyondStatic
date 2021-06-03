@@ -3,9 +3,9 @@ import styles from './FormLeft.module.css';
 
 export default function FormLeft() {
     return (
-        <div className="col-lg-6 col-sm-12">
+        <div className="col-lg-6 col-sm-12" style={{margin: '0'}}>
             <br />
-            <div className="row container-fluid">
+            <div className="container container-fluid">
                 <div className="col-lg-1 col-md-1 col-sm-1"></div><div className="col-lg-10 col-md-10 col-sm-10" style={{backgroundColor: '#2D62ED', borderRadius: '20px', margin: '2% auto', padding: '4%'}}>
                     <h3 className={styles.label}>Project Name</h3>
                     <h6 style={{color: 'white'}}>Enter Your Project Name Here</h6>
@@ -13,7 +13,7 @@ export default function FormLeft() {
                 </div>
                 <div className="col-lg-1 col-md-1 col-sm-1"></div>
             </div>
-            <div className="row container-fluid">
+            <div className="container container-fluid">
                 <div className="col-lg-1 col-md-1 col-sm-1"></div><div className="col-lg-10 col-md-10 col-sm-10" style={{backgroundColor: '#FF007C', borderRadius: '20px', margin: '2% auto', padding: '4%'}}>
                     <h3 className={styles.label}>Description</h3>
                     <h6 style={{color: 'white'}}>Write A Description for your project</h6>
@@ -21,7 +21,7 @@ export default function FormLeft() {
                 </div>
                 <div className="col-lg-1 col-md-1 col-sm-1"></div>
             </div>
-            <div className="row container-fluid">
+            <div className="container container-fluid">
                 <div className="col-lg-1 col-md-1 col-sm-1"></div><div className="col-lg-10 col-md-10 col-sm-10" style={{backgroundColor: '#2D62ED', borderRadius: '20px', margin: '2% auto', padding: '4%'}}>
                     <h3 className={styles.label}>Project Endpoint URL</h3>
                     <h6 style={{color: 'white'}}>URL of your Static Web Endpoint</h6>

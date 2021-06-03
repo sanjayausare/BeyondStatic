@@ -15,7 +15,7 @@ export default function CreateProject() {
             <div className="container-fluid row g-0" style={{margin:'0'}}>
                 <form onSubmit={formSubmitHandler}>
                 <FormLeft/>
-                <FormRight/>
+                <FormRight style={{margin: '0'}} />
                 </form>
             </div>
         </div>
