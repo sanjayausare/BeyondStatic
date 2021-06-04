@@ -8,6 +8,13 @@ import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 
 function Navbar(props) {
+
+  const logoutHandler = () => {
+    localStorage.setItem('username', "");
+    localStorage.setItem('token', "");
+    window.location = "/"
+  }
+
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -79,6 +86,13 @@ function Navbar(props) {
                   <Link to="/contribute">
                   <AiIcons.AiFillGithub />
                     <span>Contribute</span>
+                  </Link>
+            </li>
+
+            <li className="nav-text">
+                  <Link onClick={logoutHandler}>
+                  <AiIcons.AiOutlineLogout />
+                    <span>Logout</span>
                   </Link>
             </li>
 
