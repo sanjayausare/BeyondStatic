@@ -2,8 +2,14 @@ import React, {useState} from 'react'
 import Navbar from './Navbar'
 import FormLeft from './FormLeft'
 import FormRight from './FormRight'
+import axios from 'axios'
+import AlertDialogSlide from './AlertDialogSlide'
+
+import {getURL, getUsername, getToken} from '../utils/index'
 
 export default function CreateProject() {
+
+    const [errorCode, setErrorCode] = useState(0)
 
     const [projName, setProjName] = useState("");
     const [projDesc, setProjDesc] = useState("");
@@ -57,13 +63,46 @@ export default function CreateProject() {
             "Field2Name": field2,
             "Field3Name": field3,
             "Field4Name": field4,
-            "Field5Name": field5,
+            "Field5Name": field5
         }
-        console.log(body);
+
+        axios.post(
+            getURL()+"/api/"+getUsername()+"/project",
+             body,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': getToken()
+              }
+            }
+          ).then(
+            response => {
+              console.log(response)
+                if(response.status === 200){
+                  const data = response.data;
+                  try{
+                      if(data.id > 0)
+                      {
+                          //setErrorCode(1);
+                          window.location = "/dashboard"
+                          return 0;
+                      }
+                  }
+                catch{
+                    setErrorCode(2);
+                    return 0;
+                  }
+                }
+            }
+          )
+          .catch(
+          );
     }
 
     return (
         <div style={{padding:'0',margin:'0'}}>
+            {errorCode===1 ? <AlertDialogSlide title="Project Added" body="Project has been added successfully" /> : null}
+            {errorCode===2 ? <AlertDialogSlide title="Some Error Occurred" body="We'll fix this. Please try again later" /> : null}
             <Navbar style={{padding:'0',margin:'0'}}/>
             <br />
             <form onSubmit={formSubmitHandler}>
