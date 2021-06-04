@@ -9,5 +9,5 @@ export const getUsername = () => {
 }
 
 export const getURL = () => {
-    return "http://192.168.145.110:8000"
+    return "http://192.168.0.104:8000"
 }

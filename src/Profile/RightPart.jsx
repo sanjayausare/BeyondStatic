@@ -1,8 +1,59 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import SignUpInput from "./SignUpInput";
 import styles from './LeftPart.module.css'
+import axios from 'axios'
+import {getToken, getURL, getUsername} from '../utils/index'
 
 export default function RightPart() {
+
+    const [fname, setFname] = useState("")
+    const [lname, setLname] = useState("")
+    const [email, setEmail] = useState("")
+
+    const fnameHandler = (e) => {
+        setFname(e.target.value)
+    }
+
+    const lnameHandler = (e) => {
+        setLname(e.target.value)
+    }
+
+    const emailHandler = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const formHandler = (e) => {
+        e.preventDefault();
+        const body = {
+            "first_name": fname,
+            "last_name": lname,
+            "email": email
+        }
+        console.log(body)
+
+        axios.put(
+            getURL()+"/api/profile/"+getUsername(),
+             body,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': getToken()
+              }
+            }
+          ).then(
+            response => {
+              console.log(response)
+                if(response.status === 200){
+                  const data = response.data;
+                  console.log(data)
+                }
+            }
+          )
+          .catch(
+          );
+
+    }
+
   return (
     <div
       className="col-lg-6 col-md-6 col-sm-12 container-fluid"
@@ -26,14 +77,14 @@ export default function RightPart() {
           </h1>
         </div>
         <div className="col-lg-12 col-sm-12">
-          <form>
+          <form onSubmit={formHandler}>
             <div className="row container-fluid">
               <div className="col-lg-6 col-sm-12" style={{marginTop: '3%'}}>
                 <SignUpInput
                   type="text"
                   name="First Name"
                   labelName="First Name"
-                  //handler={usernameHandler}
+                  handler={fnameHandler}
                 />
               </div>
               <div className="col-lg-6 col-sm-12" style={{marginTop: '3%'}}>
@@ -41,7 +92,7 @@ export default function RightPart() {
                   type="text"
                   name="Last Name"
                   labelName="Last Name"
-                  //handler={usernameHandler}
+                  handler={lnameHandler}
                 />
               </div>
               <div className="col-lg-12 col-sm-12" style={{marginTop: '3%'}}>
@@ -49,11 +100,11 @@ export default function RightPart() {
                   type="email"
                   name="Email"
                   labelName="Email"
-                  //handler={usernameHandler}
+                  handler={emailHandler}
                 />
               </div>
               <div className="col-lg-12 col-sm-12 text-center">
-                <button type="submit" style={{border: 'white solid 4px', marginTop: '9%', marginBottom: '4%', width: 'auto', paddingLeft:'3%', paddingRight: '3%', paddingTop: '1%', paddingBottom: '1%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: '#0046FF', color: 'white', border: 'none'}} >Update Profile &nbsp; <img src="images/pencil.svg" alt="arrow" className={styles.signUpArrow} /></button>
+                <button type="submit" style={{border: 'white solid 1px', marginTop: '9%', marginBottom: '4%', width: 'auto', paddingLeft:'3%', paddingRight: '3%', paddingTop: '1%', paddingBottom: '1%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: '#0046FF', color: 'white', boxShadow: '0px 6px 10px #272D3B33'}} >Update Profile &nbsp; <img src="images/pencil.svg" alt="arrow" className={styles.signUpArrow} /></button>
                 </div>
             </div>
           </form>
