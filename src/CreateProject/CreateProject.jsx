@@ -104,7 +104,7 @@ export default function CreateProject() {
             {errorCode===1 ? <AlertDialogSlide title="Project Added" body="Project has been added successfully" /> : null}
             {errorCode===2 ? <AlertDialogSlide title="Some Error Occurred" body="We'll fix this. Please try again later" /> : null}
             <Navbar style={{padding:'0',margin:'0'}}/>
-            <br />
+            <br /><br />
             <form onSubmit={formSubmitHandler}>
             <div className="container-fluid row g-0" style={{margin:'0'}}>
                 

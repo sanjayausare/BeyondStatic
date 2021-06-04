@@ -13,6 +13,7 @@ const Dashboard = () => {
     return(
         <div className="" style={{padding:'0',margin:'0'}}>
             <Navbar style={{padding:'0',margin:'0'}}/>
+            <br /><br /><br />
             <NewProject style={{padding:'0',margin:'0'}} />
             <MyProjects style={{padding:'0',margin:'0'}}/>
             <Overview style={{padding:'0',margin:'0'}}/>

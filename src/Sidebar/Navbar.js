@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import styles from './Navbar.module.css'
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import * as IoIcons from 'react-icons/io';
 
 function Navbar(props) {
   const [sidebar, setSidebar] = useState(false);
@@ -25,22 +25,64 @@ function Navbar(props) {
         <IconContext.Provider value={{ color: '#fff' }}>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar} style={{marginLeft: '0', paddingLeft: '0'}}>
-            <li className='navbar-toggle'>
+            <li className='navbar-toggle' style={{alignItems: 'right', textAlign: 'right'}}>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
 
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
+            <div className="row container-fluid" style={{marginTop: '8%', marginBottom: '8%'}}>
+              <div className="col-lg-3 col-sm-3" style={{textAlign: 'center', marginBottom: '2%'}}>
+                <img src="./images/logoWhite.svg" height="65px" alt="white-logo" />
+              </div>
+              <div className="col-lg-9 col-sm-9">
+                <h3 style={{color: 'white', marginBottom: '2%'}}>Beyond Static</h3>
+              </div>
+            </div>
+
+            <li className="nav-text">
+                  <Link to="/dashboard">
+                  <AiIcons.AiFillHome />
+                    <span>Dashboard</span>
                   </Link>
-                </li>
-              );
-            })}
+            </li>
+
+            <li className="nav-text">
+                  <Link to="/createproject">
+                  <AiIcons.AiFillFolderAdd />
+                    <span>Create Project</span>
+                  </Link>
+            </li>
+
+            <li className="nav-text">
+                  <Link to="/docs">
+                  <IoIcons.IoIosPaper />
+                    <span>Documentation</span>
+                  </Link>
+            </li>
+
+            <li className="nav-text">
+                  <Link to="/profile">
+                  <AiIcons.AiOutlineUser />
+                    <span>Profile</span>
+                  </Link>
+            </li>
+
+            <li className="nav-text">
+                  <Link to="/aboutus">
+                  <AiIcons.AiOutlineTeam />
+                    <span>About Us</span>
+                  </Link>
+            </li>
+
+            <li className="nav-text">
+                  <Link to="/contribute">
+                  <AiIcons.AiFillGithub />
+                    <span>Contribute</span>
+                  </Link>
+            </li>
+
+            
           </ul>
         </nav>
       </IconContext.Provider>

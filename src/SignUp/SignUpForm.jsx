@@ -95,7 +95,6 @@ const SignUpForm = () => {
             }
           ).then(
             response => {
-              console.log(response)
                 if(response.status === 200){
                   const data = response.data;
                   if(data.status === "400 Bad Request")
