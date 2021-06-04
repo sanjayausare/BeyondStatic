@@ -42,7 +42,7 @@ const SignUpRightBanner = () => {
               </div>
             </div>
             <div className="col-lg-12 col-sm-12" style={{marginTop: '4%', marginBottom: '2%'}}>
-                <div className="text-center container container-fluid"><img src="./images/signup.svg" className="img img-fluid" alt="db"/></div>
+                <div className="text-center container container-fluid"><img src="./images/boy.svg" className="img img-fluid" alt="db"/></div>
             </div>
           </div>
         </div>

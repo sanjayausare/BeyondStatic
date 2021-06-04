@@ -6,6 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import {getURL} from '../utils/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import styles from './Login.css';
@@ -38,8 +39,8 @@ class Login extends Component {
     e.preventDefault();
 
     const data = {
-    username: this.username,
-    password: this.password
+    "username": this.username,
+    "password": this.password
   };
 
     if (this.state.username === "react" && this.state.password === "password") {
@@ -54,13 +55,31 @@ class Login extends Component {
       });
     }
 
-    axios.post('login',data)
-    .then(res => {
-      localStorage.setItem('token',res.data.token);
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    const thatURL = getURL() + "/api/login";
+
+
+    axios.post(
+      thatURL,
+      {
+        "username": this.state.username,
+        "password": this.state.password
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then(
+      response => {
+          console.log(response.data);
+      }
+    )
+    .catch(
+      err => {
+        //setAlertCode(3);
+        //return 0;
+      }
+    );
   };
 
   handleClose = () => {
