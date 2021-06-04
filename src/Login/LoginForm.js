@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import styles from './Login.css';
+import axios from "axios";
 class Login extends Component {
   
   constructor(props) {
@@ -32,8 +33,15 @@ class Login extends Component {
       password: event.target.value
     });
   };
+  
+  login = (e) => {
+    e.preventDefault();
 
-  signIn = () => {
+    const data = {
+    username: this.username,
+    password: this.password
+  };
+
     if (this.state.username === "react" && this.state.password === "password") {
       this.setState({
         open: true,
@@ -45,6 +53,14 @@ class Login extends Component {
         message: "Incorrect Username or Password!"
       });
     }
+
+    axios.post('login',data)
+    .then(res => {
+      localStorage.setItem('token',res.data.token);
+    })
+    .catch(err => {
+      console.log(err)
+    })
   };
 
   handleClose = () => {
@@ -52,7 +68,30 @@ class Login extends Component {
       open: false
     });
   };
+// In dashboard file
+// state = {};
+// componentDidMount() {
+//   const config = {
+//     headers: {
+//       Authorization: 'Bearer ' + localStorage.getItem('token')
+//     }
+//   }
+//   axios.get('user',config).then(res => {
+//   this.setState({
+//     user:res.data
+//   })
+// },
+//   err => {
+//     console.log(err);
+//   }
+//   )
+// }
 
+// ------------------------------------------------------
+//In index.js
+// axios.defaults.baseURL = 'http://localhost:8000/';
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+// ----------------------------------------
   render() {
     
     return (
@@ -106,8 +145,8 @@ class Login extends Component {
                style={{backgroundColor: '#0046FF', color: '#fff',borderRadius:'2em'}}
                  variant="contained"
                  color="primary"
-                 onClick={() => {
-                   this.signIn();
+                 onClick={(e) => {
+                   this.login(e);
                  }}
                >
                  Log In&nbsp;&nbsp;&nbsp;<img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} />
