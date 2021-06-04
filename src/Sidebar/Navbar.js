@@ -19,7 +19,7 @@ function Navbar(props) {
           <Link to='#' className='menu-bars' style={{marginLeft: '2%'}}>
             <FaIcons.FaBars onClick={showSidebar} value={{ color: '#2D62ED' }} />
           </Link>
-          <strong className={styles.nav}><p style={{marginLeft: '8%', marginTop: '1%', marginBottom: '1%', fontSize: '1.8rem'}}><span style={{borderTopColor: "#2D62ED", borderTop: '10px solid #2D62ED', borderRadius: '10px'}}>{props.prefix}</span>{props.suffix}</p></strong>
+          <strong className={styles.nav}><p style={{marginLeft: '8%', marginTop: '1%', marginBottom: '1%', fontSize: '1.8rem'}}><span style={{borderTopColor: "#2D62ED", borderTop: '5px solid #2D62ED', borderRadius: '0'}}>{props.prefix}</span>{props.suffix}</p></strong>
         </div>
         </IconContext.Provider>
         <IconContext.Provider value={{ color: '#fff' }}>

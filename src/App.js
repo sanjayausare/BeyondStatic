@@ -6,6 +6,7 @@ import Login from './Login/Login'
 import SignUp from './SignUp/SignUp'
 import Dashboard from './Dashboard/Dashboard'
 import CreateProject from './CreateProject/CreateProject'
+import Profile from './Profile/Profile'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/signup" component={SignUp}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
           <Route exact path="/createproject" component={CreateProject}></Route>
+          <Route exact path="/profile" component={Profile}></Route>
           </Switch>
       </Router>
     </div>
