@@ -131,7 +131,7 @@ export default function Mainbar(props) {
           window.location = "/project/" + props.id;
         }
       })
-      .catch(setErrorCode(1));
+      .catch();
   };
 
   const deleteHandler = () => {
@@ -139,7 +139,7 @@ export default function Mainbar(props) {
   }
 
   return (
-    <div className="col-lg-12 col-md-12 col-sm-12" style={{ margin: "5% 0" }}>
+    <div className="col-lg-12 col-md-12 col-sm-12" style={{ margin: "5% auto" }}>
       {wantToDelete ? confirmDeleteDialog : null}
       {errorCode === 1 ? (
         <AlertDialogSlide
@@ -158,12 +158,12 @@ export default function Mainbar(props) {
           padding: "2% auto",
         }}
       >
-        <div className="col-lg-9 col-md-9 col-sm-12">
+        <div className="col-lg-8 col-md-8 col-sm-12">
           <h1 style={{ color: "#fff", padding: "auto 1%" }}>
             {props.projectName}
           </h1>
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 text-center">
+        <div className="col-lg-4 col-md-4 col-sm-12 text-center">
           <img
             src={refresh}
             onClick={refreshHandler}

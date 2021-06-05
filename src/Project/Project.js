@@ -1,7 +1,10 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Mainbar from './Mainbar'
+import Metadata from './Metadata'
+import Table from './Table'
 import axios from "axios";
+import TheChart from './TheChart'
 import {useState, useEffect} from 'react'
 import { getToken, getUsername, getURL } from "../utils/index";
 
@@ -57,8 +60,19 @@ export default function Project({match:{params:{id}}}) {
         <div style={{padding:'0',margin:'0'}}>
             <Navbar style={{padding:'0',margin:'0'}}/>
             <br /><br />
-            <div className="row">
+            <div className="row container-fluid">
             <Mainbar id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
+            </div>
+            <div className="row">
+            <Metadata id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
+            </div>
+            <div className="row">
+            <div className="col-lg-8 col-md-8 col-sm-12">
+              <Table id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12">
+              <TheChart id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
+            </div>
             </div>
         </div>
     )
