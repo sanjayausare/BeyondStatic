@@ -38,15 +38,15 @@ export default function EditProject({match:{params:{id}}}) {
 
     const [errorCode, setErrorCode] = useState(0)
 
-    const [projName, setProjName] = useState("");
-    const [projDesc, setProjDesc] = useState("");
-    const [projURL, setProjURL] = useState("");
+    const [projName, setProjName] = useState(projDet.ProjectName);
+    const [projDesc, setProjDesc] = useState(projDet.Description);
+    const [projURL, setProjURL] = useState(projDet.EndpointURL);
 
-    const [field1, setField1] = useState("");
-    const [field2, setField2] = useState("");
-    const [field3, setField3] = useState("");
-    const [field4, setField4] = useState("");
-    const [field5, setField5] = useState("");
+    const [field1, setField1] = useState(projDet.Field1Name);
+    const [field2, setField2] = useState(projDet.Field2Name);
+    const [field3, setField3] = useState(projDet.Field3Name);
+    const [field4, setField4] = useState(projDet.Field4Name);
+    const [field5, setField5] = useState(projDet.Field5Name);
 
     const projNameHandler = (val) => {
         setProjName(val);
