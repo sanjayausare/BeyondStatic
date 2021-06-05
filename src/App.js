@@ -9,6 +9,7 @@ import CreateProject from './CreateProject/CreateProject'
 import Profile from './Profile/Profile'
 import Dashboard2 from './Dashboard2/FrontPage'
 import Project from './Project/Project'
+import EditProject from './EditProject/EditProject'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/createproject" component={CreateProject}></Route>
           <Route exact path="/profile" component={Profile}></Route>
           <Route path="/project/:id" component={Project}></Route>
+          <Route path="/editproject/:id" component={EditProject}></Route>
           </Switch>
       </Router>
     </div>

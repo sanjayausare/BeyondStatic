@@ -1,0 +1,21 @@
+.input{
+    width: 100%;
+    margin: 1% 0;
+    font-size: 1.2rem;
+    padding: auto 10px;
+    border-radius: 28px;
+    border-width: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-shadow: 1px 4px 8px #00000029;
+    border-radius: 20px;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.label{
+    font-size: 1.8rem;
+    color: white;
+}
