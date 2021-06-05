@@ -13,3 +13,10 @@
     background-color: #FF007C;
     color: white;
 }
+
+.signUpArrow{
+    transition: transform .7s ease-in-out;
+  }
+.signUpArrow:hover {
+    transform: rotate(45deg);
+  }

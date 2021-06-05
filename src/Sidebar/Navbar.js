@@ -6,6 +6,7 @@ import styles from './Navbar.module.css'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import whiteLogo from '../assets/logoWhite.svg'
 
 function Navbar(props) {
 
@@ -40,7 +41,7 @@ function Navbar(props) {
 
             <div className="row container-fluid" style={{marginTop: '8%', marginBottom: '8%'}}>
               <div className="col-lg-3 col-sm-3" style={{textAlign: 'center', marginBottom: '2%'}}>
-                <img src="./images/logoWhite.svg" height="65px" alt="white-logo" />
+                <img src={whiteLogo} height="65px" alt="white-logo" />
               </div>
               <div className="col-lg-9 col-sm-9">
                 <h3 style={{color: 'white', marginBottom: '2%'}}>Beyond Static</h3>
