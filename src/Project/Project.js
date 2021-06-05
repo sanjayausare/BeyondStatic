@@ -58,7 +58,7 @@ export default function Project({match:{params:{id}}}) {
             <Navbar style={{padding:'0',margin:'0'}}/>
             <br /><br />
             <div className="row">
-            <Mainbar id={id} projectName={projectName}  />
+            <Mainbar id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
             </div>
         </div>
     )
