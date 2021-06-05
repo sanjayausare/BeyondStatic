@@ -11,6 +11,10 @@ export default function Mainbar(props) {
     window.location = "/project/"+props.id
   }
 
+  const editHandler = () => {
+    window.location = "/editproject/"+props.id
+  }
+
   return (
     <div className="col-lg-12 col-md-12 col-sm-12" style={{ margin: "5% 0" }}>
       <br />
@@ -40,6 +44,7 @@ export default function Mainbar(props) {
           <img
             src={edit}
             alt="edit"
+            onClick={editHandler}
             className="img img-fluid"
             width="40%"
             style={{ margin: "5%", maxWidth: "30px" }}
