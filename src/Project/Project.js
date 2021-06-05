@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
+// import Dashboard2 from '../Dashboard2/FrontPage'
 
 export default function Project({match:{params:{id}}}) {
     return (
