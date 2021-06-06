@@ -156,6 +156,7 @@ export default function Mainbar(props) {
           borderRadius: "20px",
           margin: "0",
           padding: "2% auto",
+          boxShadow: '0px 3px 6px #00000029'
         }}
       >
         <div className="col-lg-8 col-md-8 col-sm-12">

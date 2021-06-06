@@ -50,30 +50,41 @@ export default function Chart() {
   };
 
   const options = {
-    scales: {
-        x: {
-            grid: {
-                display:false
+    plugins: {
+      legend: {
+          display: true,
+          labels:{
+              color: '#fff',
+              font: {
+                  size: 15,
+              }
+          }
+      }
+    },
+  scales: {
+      x: {
+          grid: {
+              display:false
+          },
+          ticks: {
+              fontColor: '#fff',
+              color: '#fff',
             },
-            ticks: {
-                fontColor: '#fff',
-                color: '#fff',
-              },
-        },
-        y: {
-            grid: {
-                display:false,
+      },
+      y: {
+          grid: {
+              display:false,
+          },
+          ticks: {
+              beginAtZero: true,
+              fontColor: '#fff',
+              color: '#fff',
             },
-            ticks: {
-                beginAtZero: true,
-                fontColor: '#fff',
-                color: '#fff',
-              },
-        }
-    }
-  };
+      }
+  }
+};
 
-  return <div style={{backgroundColor: '#FF007C', borderRadius: '22px', margin: '3% auto', padding: '3%', color:"#fff"}}>
+  return <div style={{backgroundColor: '#FF007C', borderRadius: '22px', margin: '3% auto', padding: '3%', color:"#fff", boxShadow: '0px 3px 6px #00000029'}}>
     <Line data={data} options={options} />
   </div>;
 }

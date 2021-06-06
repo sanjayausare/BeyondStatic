@@ -4,13 +4,13 @@ export default function Metadata(props) {
   return (
     <>
       <div className="col-lg-6 col-md-6 col-sm-12">
-        <div className="row">
+        <div className="row container-fluid">
           <div
             style={{
               backgroundColor: "#FF007C",
               borderRadius: "20px",
               margin: "3%",
-              padding: "auto",
+              padding: "auto", boxShadow: '0px 3px 6px #00000029'
             }}
             className="col-lg-12 col-md-12 col-sm-12"
           >
@@ -27,7 +27,7 @@ export default function Metadata(props) {
               backgroundColor: "#2D62ED",
               borderRadius: "20px",
               margin: "0 3% 3% 3%",
-              padding: "auto",
+              padding: "auto", boxShadow: '0px 3px 6px #00000029'
             }}
             className="col-lg-12 col-md-12 col-sm-12"
           >
@@ -47,7 +47,7 @@ export default function Metadata(props) {
             backgroundColor: "#7D00B5",
             borderRadius: "20px",
             margin: "3%",
-            padding: "auto",
+            padding: "auto", boxShadow: '0px 3px 6px #00000029'
           }}
         >
           <br />

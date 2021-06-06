@@ -50,6 +50,17 @@ export default function TheChart(props) {
   };
 
   const options = {
+      plugins: {
+        legend: {
+            display: true,
+            labels:{
+                color: '#fff',
+                font: {
+                    size: 15,
+                }
+            }
+        }
+      },
     scales: {
         x: {
             grid: {
@@ -73,7 +84,7 @@ export default function TheChart(props) {
     }
   };
 
-  return <div style={{backgroundColor: '#FF007C', borderRadius: '22px', margin: '3%', padding: '3%', color:"#fff"}}>
+  return <div style={{backgroundColor: '#FF007C', borderRadius: '22px', margin: '3%', padding: '3%', color:"#fff", boxShadow: '0px 3px 6px #00000029'}}>
     <Line data={data} options={options} />
   </div>;
 }

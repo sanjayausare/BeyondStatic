@@ -5,6 +5,7 @@ import Metadata from './Metadata'
 import Table from './Table'
 import axios from "axios";
 import TheChart from './TheChart'
+import Info from './Info'
 import {useState, useEffect} from 'react'
 import { getToken, getUsername, getURL } from "../utils/index";
 
@@ -71,7 +72,10 @@ export default function Project({match:{params:{id}}}) {
               <Table id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12">
-              <TheChart id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} />
+              <div className="row container-fluid">
+                <div className="col-lg-12 col-md-12 col-sm-12"><TheChart id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} /></div>
+                <div className="col-lg-12 col-md-12 col-sm-12"><Info id={id} projectName={projectName} projectStatus={projectStatus} projectData={projectData} projectDesc={projectDesc} projectURL={projectURL} field1={field1} field2={field2} field3={field3} field4={field4} field5={field5} /></div>
+              </div>
             </div>
             </div>
         </div>

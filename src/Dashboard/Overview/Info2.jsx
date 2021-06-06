@@ -30,7 +30,7 @@ export default function Info2() {
     )
 
     return (
-        <div style={{backgroundColor: '#7D00B5',margin: 'auto', padding: '3% 6%', borderRadius: '20px'}}>
+        <div style={{backgroundColor: '#7D00B5',margin: 'auto', padding: '3% 6%', borderRadius: '20px', boxShadow: '0px 3px 6px #00000029'}}>
            <h1 style={{color: '#fff', margin: '5% auto'}}>
                 <img src="./images/24.svg" alt="24" className="img img-fluid" width="20%" style={{alignContent: 'right', alignItems: 'right', textAlign: 'right'}} />
                 &nbsp;&nbsp;{val}
