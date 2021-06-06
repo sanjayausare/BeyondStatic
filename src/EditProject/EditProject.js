@@ -38,7 +38,9 @@ export default function EditProject({match:{params:{id}}}) {
       }
     )
     .catch(
-      window.location = "/login"
+      () => {
+        window.location = "/login"
+      }
     );
 
 
@@ -64,7 +66,9 @@ export default function EditProject({match:{params:{id}}}) {
       }
     )
     .catch(
-      window.location = "/dashboard"
+      () => {
+        window.location = "/dashboard"
+      }
     );
 
     useEffect(
@@ -72,7 +76,7 @@ export default function EditProject({match:{params:{id}}}) {
           axios({
             method: "GET",
             url:
-              url + "/api/project/"+id,
+              url + "/api/project/"+id+"/"+username,
             headers: {
               "Content-Type": "application/json",
               Authorization: `${token}`,
@@ -83,7 +87,7 @@ export default function EditProject({match:{params:{id}}}) {
               setProjDet(dat)
             })
             .catch((err) => {
-              alert("Somthing went wrong!");
+              alert("Something went wrong!");
             });
         }, []
       )
@@ -147,7 +151,7 @@ export default function EditProject({match:{params:{id}}}) {
         }
 
         axios.put(
-            url + "/api/project/"+id,
+            url + "/api/project/"+id+"/"+username,
              body,
             {
               headers: {
