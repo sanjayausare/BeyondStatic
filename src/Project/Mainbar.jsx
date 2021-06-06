@@ -19,8 +19,6 @@ import Slide from '@material-ui/core/Slide';
 
 export default function Mainbar(props) {
   const [errorCode, setErrorCode] = useState(0);
-  const token = getToken();
-  const username = getUsername();
   const url = getURL();
 
   const [wantToDelete, setWantToDelete] = useState(false)

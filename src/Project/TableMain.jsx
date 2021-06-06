@@ -24,6 +24,15 @@ import { useState, useEffect } from "react";
 import { getToken, getUsername, getURL } from "../utils/index";
 import axios from "axios";
 
+import AlertDialogSlide from "./AlertDialogSlide";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
 export default function EnhancedTable(props) {
 
   //selected -> list of selected messages to delete
@@ -102,8 +111,83 @@ export default function EnhancedTable(props) {
     { id: '5', numeric: false, disablePadding: false, label: props.field5 },
   ];
 
+  const [wantToDelete, setWantToDelete] = useState(false)
+
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const noHandleClose = () => {
+    setOpen(false);
+    window.location = "/project/"+props.id
+  }
+
+  const yesHandleClose = () => {
+    setOpen(false)
+
+    const body = {
+      "messageList": selected
+    }
+
+    axios.post(
+      getURL()+"/api/deletemessages/"+props.id,
+       body,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': getToken()
+        }
+      }
+    ).then(
+      response => {
+        window.location = "/project/"+props.id
+      }
+    )
+    .catch(
+      (err) => {
+        setErrorCode(1)
+        window.location = "/project/"+props.id
+      }
+    );
+  }
+
+  const confirmDeleteDialog = (
+    <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"You have been Warned"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+          Are you sure you want to delete the messages? Once you do, there's no going back.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={noHandleClose} color="primary">
+            No
+          </Button>
+          <Button onClick={yesHandleClose} color="primary">
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
+  );
+
+  
+
   const deleteHandler = () => {
-    console.log(selected)
+
+    setWantToDelete(true)
   }
   
   function EnhancedTableHead(props) {
@@ -199,7 +283,7 @@ export default function EnhancedTable(props) {
           </Typography>
         ) : (
           <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-            Project Messages
+            Project Messages ({rows.length})
           </Typography>
         )}
   
@@ -248,12 +332,8 @@ export default function EnhancedTable(props) {
     },
   }));
 
-
-
-
-
-
   const classes = useStyles();
+  const [errorCode, setErrorCode] = useState(0);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
@@ -268,7 +348,7 @@ export default function EnhancedTable(props) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.serial);
+      const newSelecteds = rows.map((n) => n.messageID);
       setSelected(newSelecteds);
       return;
     }
@@ -310,6 +390,14 @@ export default function EnhancedTable(props) {
 
   return (
     <div className={classes.root}>
+      {wantToDelete ? confirmDeleteDialog : null}
+      {errorCode === 1 ? (
+        <AlertDialogSlide
+          projID={props.id}
+          title="Some Error Occurred"
+          body="We'll fix this. Please try again later"
+        />
+      ) : null}
       <Paper className={classes.paper}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
