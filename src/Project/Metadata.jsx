@@ -34,8 +34,8 @@ export default function Metadata(props) {
             <br />
             <h1 style={{ margin: "auto 3%", color: "#fff" }}>Endpoint URL</h1>
             <br />
-            <h4 style={{ margin: "auto 3%", color: "#fff" }}>
-              {props.projectURL}
+            <h4 style={{ margin: "auto 3%", color: "#fff", wordWrap: 'break-word' }}>
+            <span>{props.projectURL}</span>
             </h4>
             <br />
           </div>
@@ -50,6 +50,7 @@ export default function Metadata(props) {
             padding: "auto", boxShadow: '0px 3px 6px #00000029'
           }}
         >
+          <div className="container-fluid">
           <br />
           <h1 style={{ margin: "auto 3%", color: "#fff" }}>Fields</h1>
           <br />
@@ -63,6 +64,7 @@ export default function Metadata(props) {
             </ul>
           </h4>
           <br />
+          </div>
         </div>
       </div>
     </>
