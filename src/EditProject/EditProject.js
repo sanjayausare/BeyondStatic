@@ -15,6 +15,33 @@ export default function EditProject({match:{params:{id}}}) {
     const username = getUsername();
     const url = getURL();
 
+
+    const body2 = {
+      "token": token
+    }
+
+    axios.post(
+      getURL()+"/api/tokencheck",
+       body2,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': getToken()
+        }
+      }
+    ).then(
+      response => {
+        if(!response.data.status)
+        {
+          window.location = "/login"
+        }
+      }
+    )
+    .catch(
+      window.location = "/login"
+    );
+
+
     const body = {
       "username": username
     }

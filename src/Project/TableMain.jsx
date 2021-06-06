@@ -53,7 +53,7 @@ export default function EnhancedTable(props) {
     () => {
       axios({
         method: "GET",
-        url: url + "/api/projectobjects/" + props.id,
+        url: url + "/api/projectobjects/" + props.id + "/" + getUsername(),
         headers: {
           "Content-Type": "application/json",
           Authorization: `${token}`,
@@ -136,7 +136,7 @@ export default function EnhancedTable(props) {
     }
 
     axios.post(
-      getURL()+"/api/deletemessages/"+props.id,
+      getURL()+"/api/deletemessages/"+props.id+"/"+getUsername(),
        body,
       {
         headers: {

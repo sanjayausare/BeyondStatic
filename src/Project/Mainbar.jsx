@@ -42,7 +42,7 @@ export default function Mainbar(props) {
     setOpen(false)
 
     axios
-      .delete(url + "/api/project/" + props.id, {
+      .delete(url + "/api/project/" + props.id+"/"+getUsername(), {
         headers: {
           "Content-Type": "application/json",
           Authorization: getToken(),
@@ -117,7 +117,7 @@ export default function Mainbar(props) {
     };
 
     axios
-      .put(url + "/api/project/" + props.id, body, {
+      .put(url + "/api/project/" + props.id + "/" + getUsername(), body, {
         headers: {
           "Content-Type": "application/json",
           Authorization: getToken(),
