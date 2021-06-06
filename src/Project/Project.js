@@ -46,10 +46,38 @@ export default function Project({
         setProjectStatus(dat.ProjectStatus);
         setProjectURL(dat.EndpointURL);
         setField1(dat.Field1Name);
-        setField2(dat.Field2Name);
-        setField3(dat.Field3Name);
-        setField4(dat.Field4Name);
-        setField5(dat.Field5Name);
+        if(dat.Field2Name==="")
+        {
+          setField2("--");
+        }
+        else
+        {
+          setField2(dat.Field2Name);
+        }
+        if(dat.Field3Name==="")
+        {
+          setField3("--");
+        }
+        else
+        {
+          setField3(dat.Field3Name);
+        }
+        if(dat.Field4Name==="")
+        {
+          setField4("--");
+        }
+        else
+        {
+          setField4(dat.Field4Name);
+        }
+        if(dat.Field5Name==="")
+        {
+          setField5("--");
+        }
+        else
+        {
+          setField5(dat.Field5Name);
+        }
       })
       .catch((err) => {
         alert("Something went wrong!");

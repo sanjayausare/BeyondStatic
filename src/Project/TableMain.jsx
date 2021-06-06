@@ -26,27 +26,62 @@ import axios from "axios";
 
 export default function EnhancedTable(props) {
 
-  function createData(serial, name, phone, Email, message) {
-    return { serial, name, phone, Email, message };
+  const token = getToken();
+  const username = getUsername();
+  const url = getURL();
+
+  function createData(messageID, serial, name, phone, Email, message) {
+    return { messageID, serial, name, phone, Email, message };
   }
+
+  const [allMessages, setAllMessages] = useState()
   
   
   
-  const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
-  ];
+  // const rows = [
+  //   createData('Cupcake', 305, 3.7, 67, 4.3),
+  //   createData('Donut', 452, 25.0, 51, 4.9),
+  //   createData('Eclair', 262, 16.0, 24, 6.0),
+  //   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  //   createData('Gingerbread', 356, 16.0, 49, 3.9),
+  //   createData('Honeycomb', 408, 3.2, 87, 6.5),
+  //   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  //   createData('Jelly Bean', 375, 0.0, 94, 0.0),
+  //   createData('KitKat', 518, 26.0, 65, 7.0),
+  //   createData('Lollipop', 392, 0.2, 98, 0.0),
+  //   createData('Marshmallow', 318, 0, 81, 2.0),
+  //   createData('Nougat', 360, 19.0, 9, 37.0),
+  //   createData('Oreo', 437, 18.0, 63, 4.0),
+  // ];
+
+  const [rows, setRows] = useState([])
+
+  useEffect(
+    () => {
+      axios({
+        method: "GET",
+        url: url + "/api/projectobjects/" + props.id,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      })
+        .then((response) => {
+          const dat = response.data;
+          setAllMessages(dat)
+          console.log(dat)
+          let thatRow = []
+          for(let i=0; i<dat.length; i++)
+          {
+            thatRow.push(createData(dat[i].id, dat[i].Field1, dat[i].Field2, dat[i].Field3, dat[i].Field4, dat[i].Field5))
+          }
+          setRows(thatRow)
+        })
+        .catch((err) => {
+          alert("Something went wrong!");
+        });
+    }, []
+  )
   
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -75,11 +110,12 @@ export default function EnhancedTable(props) {
   }
   
   const headCells = [
-    { id: 'serial', numeric: false, disablePadding: true, label: 'Sr.No.' },
-    { id: 'name', numeric: true, disablePadding: false, label: 'Name' },
-    { id: 'phone', numeric: true, disablePadding: false, label: 'Phone No.' },
-    { id: 'Email', numeric: true, disablePadding: false, label: 'Email' },
-    { id: 'message', numeric: true, disablePadding: false, label: 'Message' },
+    { id: '0', numeric: true, disablePadding: true, label: "ID" },
+    { id: '1', numeric: false, disablePadding: true, label: props.field1 },
+    { id: '2', numeric: false, disablePadding: false, label: props.field2 },
+    { id: '3', numeric: false, disablePadding: false, label: props.field3 },
+    { id: '4', numeric: false, disablePadding: false, label: props.field4 },
+    { id: '5', numeric: false, disablePadding: false, label: props.field5 },
   ];
   
   function EnhancedTableHead(props) {
@@ -157,10 +193,6 @@ export default function EnhancedTable(props) {
   
   const EnhancedTableToolbar = (props) => {
 
-    const token = getToken();
-    const username = getUsername();
-    const url = getURL();
-
 
     const classes = useToolbarStyles();
     const { numSelected } = props;
@@ -177,7 +209,7 @@ export default function EnhancedTable(props) {
           </Typography>
         ) : (
           <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-            Nutrition
+            Project Messages
           </Typography>
         )}
   
@@ -320,7 +352,7 @@ export default function EnhancedTable(props) {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.serial}
+                      key={row.messageID}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -330,8 +362,9 @@ export default function EnhancedTable(props) {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.serial}
+                        {row.messageID}
                       </TableCell>
+                      <TableCell>{row.serial}</TableCell>
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.phone}</TableCell>
                       <TableCell>{row.Email}</TableCell>
