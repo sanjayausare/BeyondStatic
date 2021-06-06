@@ -15,6 +15,31 @@ export default function EditProject({match:{params:{id}}}) {
     const username = getUsername();
     const url = getURL();
 
+    const body = {
+      "username": username
+    }
+  
+    axios.post(
+      getURL()+"/api/checkproject/"+id,
+       body,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': getToken()
+        }
+      }
+    ).then(
+      response => {
+        if(!response.data.status)
+        {
+          window.location = "/dashboard"
+        }
+      }
+    )
+    .catch(
+      window.location = "/dashboard"
+    );
+
     useEffect(
         () => {
           axios({

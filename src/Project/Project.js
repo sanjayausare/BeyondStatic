@@ -18,6 +18,33 @@ export default function Project({
   const username = getUsername();
   const url = getURL();
 
+
+  const body = {
+    "username": username
+  }
+
+  axios.post(
+    getURL()+"/api/checkproject/"+id,
+     body,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getToken()
+      }
+    }
+  ).then(
+    response => {
+      if(!response.data.status)
+      {
+        window.location = "/dashboard"
+      }
+    }
+  )
+  .catch(
+    window.location = "/dashboard"
+  );
+
+
   const [projectData, setProjectData] = useState();
   const [projectName, setProjectName] = useState();
   const [projectDesc, setProjectDesc] = useState();
