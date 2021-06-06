@@ -26,6 +26,8 @@ import axios from "axios";
 
 export default function EnhancedTable(props) {
 
+  //selected -> list of selected messages to delete
+
   const token = getToken();
   const username = getUsername();
   const url = getURL();
@@ -35,24 +37,6 @@ export default function EnhancedTable(props) {
   }
 
   const [allMessages, setAllMessages] = useState()
-  
-  
-  
-  // const rows = [
-  //   createData('Cupcake', 305, 3.7, 67, 4.3),
-  //   createData('Donut', 452, 25.0, 51, 4.9),
-  //   createData('Eclair', 262, 16.0, 24, 6.0),
-  //   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  //   createData('Gingerbread', 356, 16.0, 49, 3.9),
-  //   createData('Honeycomb', 408, 3.2, 87, 6.5),
-  //   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  //   createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  //   createData('KitKat', 518, 26.0, 65, 7.0),
-  //   createData('Lollipop', 392, 0.2, 98, 0.0),
-  //   createData('Marshmallow', 318, 0, 81, 2.0),
-  //   createData('Nougat', 360, 19.0, 9, 37.0),
-  //   createData('Oreo', 437, 18.0, 63, 4.0),
-  // ];
 
   const [rows, setRows] = useState([])
 
@@ -138,6 +122,8 @@ export default function EnhancedTable(props) {
           {headCells.map((headCell) => (
             <TableCell
               key={headCell.id}
+              style={{textAlign: 'center', alignContent: 'center', alignItems: 'center'}}
+              className="text-center"
               align={headCell.numeric ? 'right' : 'left'}
               padding={headCell.disablePadding ? 'none' : 'default'}
               sortDirection={orderBy === headCell.id ? order : false}
@@ -342,13 +328,13 @@ export default function EnhancedTable(props) {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.serial);
+                  const isItemSelected = isSelected(row.messageID);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.serial)}
+                      onClick={(event) => handleClick(event, row.messageID)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -361,14 +347,14 @@ export default function EnhancedTable(props) {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component="th" id={labelId} scope="row" padding="none" style={{alignContent: 'center', textAlign: 'center'}} className="text-center">
                         {row.messageID}
                       </TableCell>
-                      <TableCell>{row.serial}</TableCell>
-                      <TableCell>{row.name}</TableCell>
-                      <TableCell>{row.phone}</TableCell>
-                      <TableCell>{row.Email}</TableCell>
-                      <TableCell>{row.message}</TableCell>
+                      <TableCell style={{alignContent: 'left', textAlign: 'left'}} className="text-left">{row.serial}</TableCell>
+                      <TableCell style={{alignContent: 'left', textAlign: 'left'}} className="text-left">{row.name}</TableCell>
+                      <TableCell style={{alignContent: 'left', textAlign: 'left'}} className="text-left">{row.phone}</TableCell>
+                      <TableCell style={{alignContent: 'left', textAlign: 'left'}} className="text-left">{row.Email}</TableCell>
+                      <TableCell style={{alignContent: 'left', textAlign: 'left'}} className="text-left">{row.message}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -381,7 +367,7 @@ export default function EnhancedTable(props) {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

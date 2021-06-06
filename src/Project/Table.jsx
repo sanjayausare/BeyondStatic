@@ -3,7 +3,7 @@ import DetailsTable from './TableMain'
 
 export default function Table(props) {
     return (
-        <div className="text-center">
+        <div className="container-fluid text-center">
             <DetailsTable
                 id={props.id}
                 field1={props.field1}
