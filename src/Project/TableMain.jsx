@@ -101,6 +101,10 @@ export default function EnhancedTable(props) {
     { id: '4', numeric: false, disablePadding: false, label: props.field4 },
     { id: '5', numeric: false, disablePadding: false, label: props.field5 },
   ];
+
+  const deleteHandler = () => {
+    console.log(selected)
+  }
   
   function EnhancedTableHead(props) {
     const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -201,7 +205,7 @@ export default function EnhancedTable(props) {
   
         {numSelected > 0 ? (
           <Tooltip title="Delete">
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={deleteHandler}>
               <DeleteIcon />
             </IconButton>
           </Tooltip>
