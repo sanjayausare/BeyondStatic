@@ -37,18 +37,6 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault();
 
-    // if (this.state.username === "react" && this.state.password === "password") {
-    //   this.setState({
-    //     open: true,
-    //     message: "You have successfully Logged In!",
-    //   });
-    // } else {
-    //   this.setState({
-    //     open: true,
-    //     message: "Incorrect Username or Password!",
-    //   });
-    // }
-
     const thatURL = getURL() + "/api/login";
 
     axios
@@ -93,6 +81,10 @@ class Login extends Component {
         });
       });
   };
+
+  signUpHandler = () => {
+    window.location="/signup"
+  }
 
   handleClose = () => {
     this.setState({
@@ -202,6 +194,8 @@ class Login extends Component {
                 onChange={this.setPassword}
                 value={this.state.password}
               />
+              <br/>
+              <span style={{fontSize: '1.2rem', color: '#fff'}}>Not a member? </span> <span onClick={this.signUpHandler} style={{fontSize: '1.23rem', color: '#fff', textDecoration: 'underline'}}>Sign Up</span>
             </div>
 
             <div className="col-lg-12">
