@@ -53,6 +53,36 @@ export default function CreateProject() {
         setField5(val);
     }
 
+
+    const body2 = {
+        "token": getToken()
+      }
+  
+      axios.post(
+        getURL()+"/api/tokencheck",
+         body2,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': getToken()
+          }
+        }
+      ).then(
+        response => {
+          if(!response.data.status)
+          {
+            window.location = "/login"
+          }
+        }
+      )
+      .catch(
+        () => {
+          window.location = "/login"
+        }
+      );
+
+
+
     const formSubmitHandler = (e) => {
         e.preventDefault();
         const body = {

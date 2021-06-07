@@ -3,6 +3,8 @@ import Navbar from './Navbar'
 import LeftPart from './LeftPart'
 import RightPart from './RightPart'
 import SignUpRightBanner from './SignUpRightBanner'
+import axios from 'axios'
+import {getToken, getUsername, getURL} from '../utils/index'
 
 export default function Profile() {
 
@@ -18,6 +20,33 @@ export default function Profile() {
             setEditEnable(true)
         }
     }
+
+    const body2 = {
+        "token": getToken()
+      }
+  
+      axios.post(
+        getURL()+"/api/tokencheck",
+         body2,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': getToken()
+          }
+        }
+      ).then(
+        response => {
+          if(!response.data.status)
+          {
+            window.location = "/login"
+          }
+        }
+      )
+      .catch(
+        () => {
+          window.location = "/login"
+        }
+      );
 
     return (
         <div style={{padding:'0',margin:'0'}}>

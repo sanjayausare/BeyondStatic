@@ -70,6 +70,7 @@ export default function EditProject({match:{params:{id}}}) {
         window.location = "/dashboard"
       }
     );
+    
 
     useEffect(
         () => {

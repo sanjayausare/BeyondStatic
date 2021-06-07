@@ -5,39 +5,46 @@ import MyProjects from './MyProjects'
 import Overview from './Overview/Overview'
 import Footer from './Footer'
 import axios from 'axios'
+import {getToken, getUsername, getURL} from '../utils/index'
 
-class Dashboard extends Component {
-    state = {};
-componentDidMount() {
-  const config = {
-    headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token')
+
+export default function Dashboard() {
+
+  const body2 = {
+    "token": getToken()
+  }
+
+  axios.post(
+    getURL()+"/api/tokencheck",
+     body2,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getToken()
+      }
     }
-  }
-  axios.get('user',config).then(res => {
-  this.setState({
-    user:res.data
-  })
-},
-  err => {
-    console.log(err);
-  }
+  ).then(
+    response => {
+      if(!response.data.status)
+      {
+        window.location = "/login"
+      }
+    }
   )
-};
-    newProjHandler = () => {
-        window.location="/createproject"
+  .catch(
+    () => {
+      window.location = "/login"
     }
-    render(){
-    return(
-        <div className="" style={{padding:'0',margin:'0'}}>
+  );
+
+  return (
+    <div className="" style={{padding:'0',margin:'0'}}>
             <Navbar style={{padding:'0',margin:'0'}}/>
             <br /><br /><br />
             <NewProject style={{padding:'0',margin:'0'}} />
             <MyProjects style={{padding:'0',margin:'0'}}/>
             <Overview style={{padding:'0',margin:'0'}}/>
             <Footer style={{padding:'0',margin:'0'}}/>
-        </div>
-    )}
+    </div>
+  )
 }
-
-export default Dashboard
