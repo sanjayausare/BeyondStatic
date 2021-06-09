@@ -167,7 +167,7 @@ const SignUpForm = () => {
         </div>
         <div className="container-fluid row" style={{textAlign: 'center', color: 'white', fontSize: '1.3rem', marginTop: '2%'}}>
             <div className="col-lg-12 col-sm-12">
-                  <p>Already a user?&nbsp; <span style={{textDecoration: 'underline'}} onClick={()=> window.location = "/login"}>Login</span></p>
+                  <p>Already a user?<span style={{textDecoration: 'underline', cursor:'pointer', marginLeft:'2%'}} onClick={()=> window.location = "/login"}>Login</span></p>
             </div>
         </div>
         <div className="container container-fluid" style={{margin: '0'}}>
@@ -223,7 +223,7 @@ const SignUpForm = () => {
                 </div>
                 <div className="col-lg-3"></div>
                 <div className="text-center col-lg-6 col-sm-12">
-                    { agreedTC ? <button type="submit" style={{marginTop: '15%', width: '100%', paddingTop: '3%', paddingBottom: '3%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white', border: 'none'}} >Sign Up &nbsp; <img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button> : null}
+                    { agreedTC ? <button type="submit" style={{marginTop: '15%', width: 'auto', padding:'3% 5%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white', border: 'none'}} >Sign Up &nbsp; <img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button> : null}
                 </div>
                 <div className="col-lg-3"></div>
               </div>

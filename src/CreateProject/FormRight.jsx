@@ -118,8 +118,8 @@ export default function FormRight(props) {
                     <h6>Add required fields to the project.</h6>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4" style={{alignItems: 'right', textAlign: 'right'}}>
-                    <img src="./images/plus.svg" alt="plus" onClick={addCountHandler} />&nbsp;&nbsp;&nbsp;
-                    <img src="./images/minus.svg" alt="minus" width="37px"  onClick={minusCountHandler}  />
+                    <img  style={{cursor: 'pointer'}}  src="./images/plus.svg" alt="plus" onClick={addCountHandler} />&nbsp;&nbsp;&nbsp;
+                    <img  style={{cursor: 'pointer'}}  src="./images/minus.svg" alt="minus" width="37px"  onClick={minusCountHandler}  />
                 </div>
                 <br />
                 <div className="col-lg-12 col-md-12 col-sm-12" style={{margin: '5% auto'}}>

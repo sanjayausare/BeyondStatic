@@ -1,0 +1,30 @@
+.card-container {
+  margin: 2%;
+  margin-bottom: 4%;
+  padding: 2%;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 5%;
+  color: #2e62ed;
+}
+.name {
+  font-size: 1.8em;
+}
+.card-content {
+  margin: 4% 2%;
+  text-align: justify;
+}
+.social {
+  text-align: center;
+}
+.social a:hover {
+  color: #2e62ed;
+}
+.social a {
+  margin: 3%;
+  color: #000;
+}

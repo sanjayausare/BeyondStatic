@@ -1,3 +1,4 @@
+import styles from "./Login.css";
 import React, { Component } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Button from "@material-ui/core/Button";
@@ -9,7 +10,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { getURL } from "../utils/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import styles from "./Login.css";
 import axios from "axios";
 class Login extends Component {
   constructor(props) {
@@ -83,8 +83,8 @@ class Login extends Component {
   };
 
   signUpHandler = () => {
-    window.location="/signup"
-  }
+    window.location = "/signup";
+  };
 
   handleClose = () => {
     this.setState({
@@ -129,11 +129,12 @@ class Login extends Component {
             <div className="col-lg-9 col-sm-12">
               <div className="col-lg-12">
                 <h1
+                  className="header"
                   style={{
                     marginTop: "0",
                     color: "white",
                     textTransform: "uppercase",
-                    fontSize: "3.9em",
+                    fontSize: "3.2em",
                   }}
                 >
                   Beyond Static
@@ -141,7 +142,11 @@ class Login extends Component {
               </div>
               <div className="col-lg-12 col-sm-12">
                 <p
-                  style={{ marginBottom: "0", color: "white", fontSize: "2em" }}
+                  style={{
+                    marginBottom: "0",
+                    color: "white",
+                    fontSize: "1.8em",
+                  }}
                 >
                   Welcome Back to Beyond Static
                 </p>
@@ -194,31 +199,48 @@ class Login extends Component {
                 onChange={this.setPassword}
                 value={this.state.password}
               />
-              <br/>
-              <span style={{fontSize: '1.2rem', color: '#fff'}}>Not a member? </span> <span onClick={this.signUpHandler} style={{fontSize: '1.23rem', color: '#fff', textDecoration: 'underline'}}>Sign Up</span>
+              <br />
+              <span style={{ fontSize: "1.2rem", color: "#fff" }}>
+                Not a member?{" "}
+              </span>{" "}
+              <span
+                onClick={this.signUpHandler}
+                style={{
+                  fontSize: "1.23rem",
+                  color: "#fff",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  marginLeft: "0",
+                }}
+              >
+                Sign Up
+              </span>
             </div>
 
             <div className="col-lg-12">
               <br />
-              <Button
-                style={{
-                  backgroundColor: "#0046FF",
-                  color: "#fff",
-                  borderRadius: "2em",
-                }}
-                variant="contained"
-                color="primary"
+              <button
                 onClick={(e) => {
                   this.login(e);
                 }}
+                type="submit"
+                style={{
+                  width: "auto",
+                  padding: "1% 3%",
+                  borderRadius: "28px",
+                  fontSize: "1.3rem",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  color: "white",
+                  border: "none",
+                }}
               >
-                Log In&nbsp;&nbsp;&nbsp;
+                Login &nbsp;&nbsp;
                 <img
                   src="images/signUpArrow.svg"
                   alt="arrow"
-                  className={styles.signUpArrow}
+                  className="loginArrow"
                 />
-              </Button>
+              </button>
             </div>
             <div
               className="col-lg-12 col-sm-12"

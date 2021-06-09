@@ -31,7 +31,6 @@ export default function Profile() {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': getToken()
           }
         }
       ).then(

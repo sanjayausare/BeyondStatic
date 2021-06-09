@@ -19,7 +19,7 @@ export default function LeftPart(props) {
               url + "/api/profile/" + username,
             headers: {
               "Content-Type": "application/json",
-              Authorization: `${token}`,
+              "Authorization": `${token}`,
             },
           })
             .then((response) => {
@@ -59,7 +59,7 @@ export default function LeftPart(props) {
                 </div>
                 <br />
                 <div className="col-lg-12 col-sm-12">
-                <button onClick={enableHandler} style={{marginTop: '8%', marginBottom: '4%', width: 'auto', paddingLeft:'3%', paddingRight: '3%', paddingTop: '1%', paddingBottom: '1%', borderRadius: '28px', fontSize: '1.3rem', backgroundColor: '#0046FF', color: 'white', border: 'none'}} >Edit Profile &nbsp; <img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button>
+                <button onClick={enableHandler} style={{marginTop: '8%', marginBottom: '4%', width: 'auto', padding:'1% 2% 1% 2%' ,borderRadius: '28px', fontSize: '1.3rem', backgroundColor: '#0046FF', color: 'white', border: 'none'}} >Edit Profile&nbsp;<img src="images/signUpArrow.svg" alt="arrow" className={styles.signUpArrow} /></button>
                 </div>
             </div>
         </div>

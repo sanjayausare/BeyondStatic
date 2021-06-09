@@ -1,0 +1,20 @@
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.content {
+  margin: 5%;
+  font-family: sans-serif;
+}
+
+.profiles {
+  margin-top: 2%;
+}
+.profiles > h1 {
+  margin: 5%;
+  margin-bottom: 2%;
+  font-size: 2.4em;
+  color: #2e62ed;
+  text-transform: uppercase;
+}

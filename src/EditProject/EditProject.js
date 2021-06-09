@@ -26,7 +26,6 @@ export default function EditProject({match:{params:{id}}}) {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': getToken()
         }
       }
     ).then(

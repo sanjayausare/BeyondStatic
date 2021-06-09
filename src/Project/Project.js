@@ -14,39 +14,58 @@ export default function Project({
     params: { id },
   },
 }) {
-
-  const [showPage, setPage] = useState(false)
+  const [showPage, setPage] = useState(false);
 
   const token = getToken();
   const username = getUsername();
   const url = getURL();
 
-
   const body = {
-    "username": username
-  }
+    username: username,
+  };
 
-  axios.post(
-    getURL()+"/api/checkproject/"+id,
-     body,
-    {
+  axios
+    .post(getURL() + "/api/checkproject/" + id, body, {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getToken()
+        "Content-Type": "application/json",
+        Authorization: getToken(),
+      },
+    })
+    .then((response) => {
+      if (!response.data.status) {
+        window.location = "/dashboard";
       }
-    }
-  ).then(
-    response => {
-      if(!response.data.status)
-      {
-        window.location = "/dashboard"
-      }
-      setPage(true)
-    }
-  )
-  .catch(
-  );
+      setPage(true);
+    })
+    .catch();
 
+    
+
+    const body2 = {
+      "token": getToken()
+    }
+
+    axios.post(
+      getURL()+"/api/tokencheck",
+       body2,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+    ).then(
+      response => {
+        if(!response.data.status)
+        {
+          window.location = "/login"
+        }
+      }
+    )
+    .catch(
+      () => {
+        window.location = "/login"
+      }
+    );
 
   const [projectData, setProjectData] = useState();
   const [projectName, setProjectName] = useState();
@@ -59,11 +78,10 @@ export default function Project({
   const [field4, setField4] = useState();
   const [field5, setField5] = useState();
 
-
   useEffect(() => {
     axios({
       method: "GET",
-      url: url + "/api/project/" + id+"/"+username,
+      url: url + "/api/project/" + id + "/" + username,
       headers: {
         "Content-Type": "application/json",
         Authorization: `${token}`,
@@ -77,36 +95,24 @@ export default function Project({
         setProjectStatus(dat.ProjectStatus);
         setProjectURL(dat.EndpointURL);
         setField1(dat.Field1Name);
-        if(dat.Field2Name==="")
-        {
+        if (dat.Field2Name === "") {
           setField2("--");
-        }
-        else
-        {
+        } else {
           setField2(dat.Field2Name);
         }
-        if(dat.Field3Name==="")
-        {
+        if (dat.Field3Name === "") {
           setField3("--");
-        }
-        else
-        {
+        } else {
           setField3(dat.Field3Name);
         }
-        if(dat.Field4Name==="")
-        {
+        if (dat.Field4Name === "") {
           setField4("--");
-        }
-        else
-        {
+        } else {
           setField4(dat.Field4Name);
         }
-        if(dat.Field5Name==="")
-        {
+        if (dat.Field5Name === "") {
           setField5("--");
-        }
-        else
-        {
+        } else {
           setField5(dat.Field5Name);
         }
       })
@@ -115,12 +121,13 @@ export default function Project({
       });
   }, []);
 
-    return (
-      <div style={{ padding: "0", margin: "0" }}>
-        <Navbar style={{ padding: "0", margin: "0" }} />
-        <br />
-        <br />
-        <div className="row container-fluid">
+  return (
+    <div style={{ padding: "0", margin: "0" }}>
+      <Navbar style={{ padding: "0", margin: "0" }} />
+      <br />
+      <br />
+      <div className="container-fluid">
+        <div className="row">
           <Mainbar
             id={id}
             projectName={projectName}
@@ -202,5 +209,6 @@ export default function Project({
           </div>
         </div>
       </div>
-    );  
+    </div>
+  );
 }

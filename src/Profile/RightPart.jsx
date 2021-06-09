@@ -61,8 +61,8 @@ export default function RightPart() {
           )
           .catch(
           );
-
     }
+
 
   return (
     <div

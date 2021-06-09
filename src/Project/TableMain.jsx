@@ -18,8 +18,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
-
 import { useState, useEffect } from "react";
 import { getToken, getUsername, getURL } from "../utils/index";
 import axios from "axios";
@@ -282,7 +280,7 @@ export default function EnhancedTable(props) {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+          <Typography className={classes.title} variant="h6" id="tableTitle" component="div" >
             Project Messages ({rows.length})
           </Typography>
         )}
@@ -294,11 +292,7 @@ export default function EnhancedTable(props) {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
+          <span></span>
         )}
       </Toolbar>
     );

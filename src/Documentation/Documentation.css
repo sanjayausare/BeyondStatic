@@ -1,0 +1,53 @@
+.docs {
+  margin: 0 4% 3% 5%;
+  color: #282828;
+  font-family: sans-serif;
+  font-size: 90%;
+}
+.intro {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+.main {
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+.main-section h2 {
+  margin-bottom: 1.5%;
+  color: #2e62ed;
+  font-weight: 600;
+}
+.main-section p {
+  margin-bottom: 3%;
+  text-align: justify;
+}
+ul {
+  margin: 2% 2% 2% 3%;
+}
+li {
+  padding: 0.8% 0;
+}
+.code-section {
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.info-piece {
+  margin: 5% 0%;
+}
+.info {
+  margin: 4% 0;
+  padding: 0%;
+  list-style: none;
+}
+.info li {
+  padding: 0;
+  line-height: 190%;
+  text-align: justify;
+}
+a {
+  text-decoration: none;
+}
+code {
+  background-color: #ebe9e9;
+}

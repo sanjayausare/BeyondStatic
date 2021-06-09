@@ -148,7 +148,7 @@ export default function Mainbar(props) {
       ) : null}
       <br />
       <div
-        className="row container-fluid"
+        className="row "
         style={{
           backgroundColor: "#2D62ED",
           borderRadius: "20px",
@@ -158,8 +158,8 @@ export default function Mainbar(props) {
         }}
       >
         <div className="col-lg-8 col-md-8 col-sm-12">
-          <h1 style={{ color: "#fff", padding: "auto 1%" }}>
-            {props.projectName}
+          <h1 style={{ color: "#fff", paddingTop: "1%"}}>
+            {props.projectName} ({props.id})
           </h1>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12 text-center">
@@ -169,7 +169,7 @@ export default function Mainbar(props) {
             alt="refresh"
             className="img img-fluid"
             width="40%"
-            style={{ margin: "5%", maxWidth: "30px" }}
+            style={{ margin: "5%", maxWidth: "30px", cursor: 'pointer' }}
           />
           <img
             src={edit}
@@ -177,7 +177,7 @@ export default function Mainbar(props) {
             onClick={editHandler}
             className="img img-fluid"
             width="40%"
-            style={{ margin: "5%", maxWidth: "30px" }}
+            style={{ margin: "5%", maxWidth: "30px", cursor: 'pointer' }}
           />
           <img
             src={deleteit}
@@ -185,7 +185,7 @@ export default function Mainbar(props) {
             onClick={deleteHandler}
             className="img img-fluid"
             width="40%"
-            style={{ margin: "5%", maxWidth: "30px" }}
+            style={{ margin: "5%", maxWidth: "30px", cursor: 'pointer' }}
           />
           {props.projectStatus ? (
             <img
@@ -194,7 +194,7 @@ export default function Mainbar(props) {
               onClick={statusHandler}
               className="img img-fluid"
               width="40%"
-              style={{ margin: "5%", maxWidth: "30px" }}
+              style={{ margin: "5%", maxWidth: "30px", cursor: 'pointer'}}
             />
           ) : (
             <img
@@ -203,7 +203,7 @@ export default function Mainbar(props) {
               onClick={statusHandler}
               className="img img-fluid"
               width="40%"
-              style={{ margin: "5%", maxWidth: "30px" }}
+              style={{ margin: "5%", maxWidth: "30px", cursor: 'pointer' }}
             />
           )}
         </div>

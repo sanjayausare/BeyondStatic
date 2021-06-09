@@ -3,7 +3,7 @@ import React from "react";
 export default function Metadata(props) {
   return (
     <>
-      <div className="col-lg-6 col-md-6 col-sm-12">
+      <div className="col-lg-6 col-md-6 col-sm-10">
         <div className="row container-fluid">
           <div
             style={{
@@ -28,20 +28,21 @@ export default function Metadata(props) {
               borderRadius: "20px",
               margin: "0 3% 3% 3%",
               padding: "auto", boxShadow: '0px 3px 6px #00000029'
+              
             }}
             className="col-lg-12 col-md-12 col-sm-12"
           >
             <br />
             <h1 style={{ margin: "auto 3%", color: "#fff" }}>Endpoint URL</h1>
             <br />
-            <h4 style={{ margin: "auto 3%", color: "#fff", wordWrap: 'break-word' }}>
-            <span>{props.projectURL}</span>
+            <h4 style={{ margin: "auto 0%", color: "#fff", wordWrap: 'break-word', marginLeft:'3%' }}>
+            <a target='_blank' style={{color: "#fff", textDecoration:'none' }} href={props.projectURL}>{props.projectURL}</a>
             </h4>
             <br />
           </div>
         </div>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-12">
+      <div className="col-lg-6 col-md-6 col-sm-10">
         <div
           style={{
             backgroundColor: "#7D00B5",
