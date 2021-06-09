@@ -4,6 +4,7 @@ import FormLeft from './FormLeft'
 import FormRight from './FormRight'
 import axios from 'axios'
 import AlertDialogSlide from './AlertDialogSlide'
+import Footer from '../Dashboard/Footer'
 
 import {getURL, getUsername, getToken} from '../utils/index'
 
@@ -143,6 +144,9 @@ export default function CreateProject() {
                 
             </div>
             </form>
+            <footer style={{position:'absolute',right:'2%', marginTop:'5%'}}>
+              <Footer style={{padding:'0',margin:'0'}}/>
+            </footer>
         </div>
     )
 }

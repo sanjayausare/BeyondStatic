@@ -2,6 +2,7 @@ import React from "react";
 import Button from '@material-ui/core/Button';
 import styles from "./LogoStuff.module.css";
 import Navbar from './Navbar'
+import Footer from '../Dashboard/Footer'
 
 export default function Contribute() {
 
@@ -108,6 +109,9 @@ export default function Contribute() {
           </div>
         </div>
       </div>
+      <footer style={{position:'absolute',right:'2%', marginTop:'4%'}}>
+            <Footer style={{padding:'0',margin:'0'}}/>
+      </footer>
     </div>
   );
 }

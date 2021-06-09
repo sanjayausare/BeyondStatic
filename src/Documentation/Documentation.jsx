@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import Frame from 'react-frame-component';
 import './Documentation.css'
+import Footer from '../Dashboard/Footer'
 export default function Documentation() {
     return (
         <div className="body" style={{padding:'0',margin:'0'}}>
@@ -61,11 +62,14 @@ export default function Documentation() {
                         </ul>
                     </div>
                 </section>
-                <footer>
+                <div>
                     So that's it. That's how you shall integrate Beyond Static to your Website. In a further update, we shall demonstrate how this can even be achieved in a Python Script. Till then, keep exploring!
-                </footer>
+                </div>
             </div>
             </div>
+            <footer style={{position:'absolute',right:'2%', marginTop:'5%'}}>
+            <Footer style={{padding:'0',margin:'0'}}/>
+      </footer>
         </div>
     );
 }

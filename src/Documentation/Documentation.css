@@ -2,7 +2,6 @@
   margin: 0 4% 3% 5%;
   color: #282828;
   font-family: sans-serif;
-  font-size: 90%;
 }
 .intro {
   margin-top: 5%;
@@ -49,5 +48,5 @@ a {
   text-decoration: none;
 }
 code {
-  background-color: #ebe9e9;
+  background-color: #ececec;
 }

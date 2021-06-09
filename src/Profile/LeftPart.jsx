@@ -36,7 +36,7 @@ export default function LeftPart(props) {
       }
 
     return (
-        <div className="col-lg-6 col-md-6 col-sm-12" style={{margin: '3% auto 0 auto', padding: '0'}}>
+        <div className="col-lg-6 col-md-6 col-sm-12" style={{margin: '3% auto 0 auto', padding: '0', paddingLeft:'3%'}}>
             <div className="row container-fluid">
                 <div className="col-lg-12 col-sm-12">
                     <h1 style={{color: '#2D62ED', marginTop: '5%', marginBottom: '7%'}}>YOUR PROFILE</h1>
@@ -65,3 +65,4 @@ export default function LeftPart(props) {
         </div>
     )
 }
+

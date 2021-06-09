@@ -39,33 +39,24 @@ export default function Project({
     })
     .catch();
 
-    
+  const body2 = {
+    token: getToken(),
+  };
 
-    const body2 = {
-      "token": getToken()
-    }
-
-    axios.post(
-      getURL()+"/api/tokencheck",
-       body2,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        }
+  axios
+    .post(getURL() + "/api/tokencheck", body2, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      if (!response.data.status) {
+        window.location = "/login";
       }
-    ).then(
-      response => {
-        if(!response.data.status)
-        {
-          window.location = "/login"
-        }
-      }
-    )
-    .catch(
-      () => {
-        window.location = "/login"
-      }
-    );
+    })
+    .catch(() => {
+      window.location = "/login";
+    });
 
   const [projectData, setProjectData] = useState();
   const [projectName, setProjectName] = useState();

@@ -2,6 +2,8 @@ import React from 'react';
 import Card from './DetailsCard'
 import Navbar from './Navbar'
 import './AboutUs.css'
+import Footer from '../Dashboard/Footer'
+
 const team = require('./TeamDetails.json');
 
 const AboutUs = () => {
@@ -38,6 +40,9 @@ const AboutUs = () => {
                 </div>
             </div>
             </div>
+            <footer>
+            <Footer style={{padding:'0',margin:'0'}}/>
+            </footer>
         </div>
     );
 }

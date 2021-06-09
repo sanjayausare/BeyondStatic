@@ -11,6 +11,7 @@
 
 .profiles {
   margin-top: 2%;
+  margin-bottom: 5%;
 }
 .profiles > h1 {
   margin: 5%;
@@ -18,4 +19,9 @@
   font-size: 2.4em;
   color: #2e62ed;
   text-transform: uppercase;
+}
+footer {
+  position: absolute;
+  right: 2%;
+  padding-bottom: 1%;
 }

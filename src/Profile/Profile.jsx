@@ -5,6 +5,7 @@ import RightPart from './RightPart'
 import SignUpRightBanner from './SignUpRightBanner'
 import axios from 'axios'
 import {getToken, getUsername, getURL} from '../utils/index'
+import Footer from '../Dashboard/Footer'
 
 export default function Profile() {
 
@@ -57,6 +58,9 @@ export default function Profile() {
                 {editEnable ? <RightPart /> :
                 <SignUpRightBanner/>}
             </div>
+            <footer style={{position:'absolute',right:'2%', marginTop:'6%'}}>
+            <Footer style={{padding:'0',margin:'0'}}/>
+      </footer>
         </div>
     )
 }
