@@ -17,7 +17,7 @@ const Card = (props) => {
                 <h1 className="name">{props.name}</h1>
             </div>
             <div className="card-content">
-                <p>
+                <p style={{margin:'8% 0'}}>
                    {props.content}
                 </p>
                 <nav className="social">
