@@ -44,7 +44,9 @@ export default function Dashboard() {
             <NewProject style={{padding:'0',margin:'0'}} />
             <MyProjects style={{padding:'0',margin:'0'}}/>
             <Overview style={{padding:'0',margin:'0'}}/>
+            <footer style={{position:'absolute',right:'2%', marginTop:'6%'}}>
             <Footer style={{padding:'0',margin:'0'}}/>
+      </footer>
     </div>
   )
 }

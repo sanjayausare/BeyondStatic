@@ -70,16 +70,23 @@ function Navbar(props) {
 
             <div
               className="row container-fluid"
-              style={{ marginTop: "5%", marginBottom: "8%" }}
+              style={{
+                textAlign: "center",
+                marginTop: "5%",
+                marginBottom: "8%",
+              }}
             >
-              <div
-                className="col-lg-3 col-sm-3"
-                style={{ textAlign: "center", marginBottom: "2%" }}
-              >
+              <div className="col-lg-3 col-sm-3" style={{ marginBottom: "2%" }}>
                 <img src={whiteLogo} height="65px" alt="white-logo" />
               </div>
               <div className="col-lg-9 col-sm-9">
-                <h3 style={{ color: "white", marginBottom: "2%" }}>
+                <h3
+                  style={{
+                    color: "white",
+                    marginBottom: "2%",
+                    textAlign: "center",
+                  }}
+                >
                   Beyond Static
                 </h3>
               </div>
